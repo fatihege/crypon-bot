@@ -1,0 +1,23 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "A powerful Discord bot",
+  "main": "index.js",
+  "dependencies": {
+    "dateformat": "^4.5.1",
+    "discord.js": "^12.5.1",
+    "wio.db": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "bot",
+    "discord",
+    "discor.js",
+    "javascript"
+  ],
+  "author": "Fatih EGE",
+  "license": "ISC"
+}
