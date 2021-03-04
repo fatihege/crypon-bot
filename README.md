@@ -1,5 +1,6 @@
 # ![Crypon Logo](https://imgupload.io/images/2021/03/04/30x30.png) Crypon
 
+
 ## Türkçe
 
 **Türkçe**, stabil, hızlı ve kolay kullanımı olan **güçlü** bir Discord moderasyon botu.
