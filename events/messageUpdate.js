@@ -7,23 +7,30 @@ module.exports = {
         if (oldMessage.guild) {
             if (await db.fetch("logch_" + oldMessage.guild.id)) {
                 if (!oldMessage.guild || oldMessage.author.bot) return;
-								if (oldMessage.content == newMessage.content) return;
-            
-                const logChannel = await db.fetch("logch_" + oldMessage.guild.id);
-                const logch = oldMessage.guild.channels.cache.find(ch => ch.id === logChannel);
-            
+                if (oldMessage.content == newMessage.content) return;
+
+                const logChannel = await db.fetch(
+                    "logch_" + oldMessage.guild.id
+                );
+                const logch = oldMessage.guild.channels.cache.find(
+                    (ch) => ch.id === logChannel
+                );
+
                 let logEmbed = {
                     color: 0xe60ffa,
-										author: {
-											name: `${oldMessage.author.username}#${oldMessage.author.discriminator}`,
-											icon_url: oldMessage.author.displayAvatarURL({ format: "png", dynamic: true })
-										},
+                    author: {
+                        name: `${oldMessage.author.username}#${oldMessage.author.discriminator}`,
+                        icon_url: oldMessage.author.displayAvatarURL({
+                            format: "png",
+                            dynamic: true
+                        })
+                    },
                     title: `Mesaj Düzenlendi - #${oldMessage.channel.name}`,
-										description: `**Önce:** ${oldMessage.content}\n**Sonra:** ${newMessage.content}`
+                    description: `**Önce:** ${oldMessage.content}\n**Sonra:** ${newMessage.content}`
                 };
-								
-								return logch.send({ embed: logEmbed });
+
+                return logch.send({ embed: logEmbed });
             }
         }
     }
-}
+};
