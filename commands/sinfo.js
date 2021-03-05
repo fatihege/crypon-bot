@@ -17,7 +17,7 @@ dateFormat.i18n = {
         "Çarşamba",
         "Perşembe",
         "Cuma",
-        "Cumartesi",
+        "Cumartesi"
     ],
     monthNames: [
         "Ock",
@@ -43,9 +43,9 @@ dateFormat.i18n = {
         "Eylül",
         "Ekim",
         "Kasım",
-        "Aralık",
+        "Aralık"
     ],
-    timeNames: ["ö", "s", "öm", "ös", "Ö", "S", "ÖÖ", "ÖS"],
+    timeNames: ["ö", "s", "öm", "ös", "Ö", "S", "ÖÖ", "ÖS"]
 };
 
 module.exports = {
@@ -59,13 +59,25 @@ module.exports = {
     permissions: null,
     async run(message, args, client) {
         const server = message.guild;
-        const serverCreatedAt = dateFormat(server.createdAt, "d mmmm dddd yyyy, h.MM.ss TT");
-				const guildRegion = server.region.charAt(0).toUpperCase() + server.region.slice(1);
+        const serverCreatedAt = dateFormat(
+            server.createdAt,
+            "d mmmm dddd yyyy, h.MM.ss TT"
+        );
+        const guildRegion =
+            server.region.charAt(0).toUpperCase() + server.region.slice(1);
         const commandembed = {
             color: 0xe60ffa,
             title: server.name + " Sunucusuna Dair Bilgiler",
-            description: `**Sunucu ID:** ${server.id}\n**Sunucu Adı:** ${server.name}\n**Toplam Üye:** ${server.memberCount}\n**Oluşturulma:** ${serverCreatedAt}\n**Bölge:** ${guildRegion}\n**${botName} Prefix:** ${await db.fetch("prefix_" + message.guild.id) ? await db.fetch("prefix_" + message.guild.id) : "!c"}`
-        }
+            description: `**Sunucu ID:** ${server.id}\n**Sunucu Adı:** ${
+                server.name
+            }\n**Toplam Üye:** ${
+                server.memberCount
+            }\n**Oluşturulma:** ${serverCreatedAt}\n**Bölge:** ${guildRegion}\n**${botName} Prefix:** ${
+                (await db.fetch("prefix_" + message.guild.id))
+                    ? await db.fetch("prefix_" + message.guild.id)
+                    : "!c"
+            }`
+        };
         message.channel.send({ embed: commandembed });
     }
-}
+};
