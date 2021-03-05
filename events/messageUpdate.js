@@ -7,6 +7,7 @@ module.exports = {
         if (oldMessage.guild) {
             if (await db.fetch("logch_" + oldMessage.guild.id)) {
                 if (!oldMessage.guild || oldMessage.author.bot) return;
+								if (oldMessage.content == newMessage.content) return;
             
                 const logChannel = await db.fetch("logch_" + oldMessage.guild.id);
                 const logch = oldMessage.guild.channels.cache.find(ch => ch.id === logChannel);
