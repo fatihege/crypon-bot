@@ -7,6 +7,16 @@ module.exports = {
         if (message.guild) {
 					if (await db.fetch("logch_" + message.guild.id)) {
 						const logChannel = await db.fetch("logch_" + message.guild.id);
+						const prefix = await db.fetch("prefix_" + message.guild.id);
+						if (
+							message.content.startsWith(prefix + "mdel") ||
+							message.content.startsWith(prefix + "messagedelete") ||
+							message.content.startsWith(prefix + "mdelete") ||
+							message.content.startsWith(prefix + "msil") ||
+							message.content.startsWith(prefix + "mesajsil")
+						) {
+							return;
+						}
 				
 						const logch = message.guild.channels.cache.find(ch => ch.id === logChannel);
 				
@@ -24,8 +34,6 @@ module.exports = {
 						
 						return logch.send({ embed: logEmbed });
 					}
-				} else {
-					message.channel.send("Sunucu bilgisi alınamadı. Lütfen geliştiricimle iletişime geçin: https://fatihege.github.io/");
 				}
     }
 }
