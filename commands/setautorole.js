@@ -10,23 +10,25 @@ module.exports = {
     permissions: "MANAGE_MESSAGES",
     async run(message, args, client) {
         if (!message.mentions.roles.first()) {
-            message.reply("Lütfen otomatik eklenecek rolü seç!")
-                .then(msg => {
-                    msg.delete({ timeout: 5000 });
-                });
+            message.reply("Lütfen otomatik eklenecek rolü seç!").then((msg) => {
+                msg.delete({ timeout: 5000 });
+            });
         }
 
         const autorole = message.mentions.roles.first();
 
         try {
             await db.set("autorole_" + message.guild.id, autorole.id);
-            message.channel.send(`Otomatik rol başarıyla ${autorole} olarak ayarlandı.`)
-                .then(msg => {
+            message.channel
+                .send(`Otomatik rol başarıyla ${autorole} olarak ayarlandı.`)
+                .then((msg) => {
                     msg.delete({ timeout: 5000 });
                 });
         } catch (error) {
             console.error(error);
-            message.channel.send("Otomatik rol ayarlanırken bir hatayla karşılaşıyorum.");
+            message.channel.send(
+                "Otomatik rol ayarlanırken bir hatayla karşılaşıyorum."
+            );
         }
     }
-}
+};
