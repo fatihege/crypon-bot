@@ -23,8 +23,6 @@ module.exports = {
 
                 return logch.send({ embed: logEmbed });
             }
-        } else {
-            console.log("hata");
         }
     }
 };
