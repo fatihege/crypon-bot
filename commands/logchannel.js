@@ -10,16 +10,20 @@ module.exports = {
     permissions: "MANAGE_CHANNEL",
     async run(message, args, client) {
         if (!message.mentions.channels.first()) {
-            message.reply("Lütfen günlük kaydını tutacağım kanalı seç!")
-                .then(msg => {
+            message
+                .reply("Lütfen günlük kaydını tutacağım kanalı seç!")
+                .then((msg) => {
                     msg.delete({ timeout: 5000 });
                 });
         }
 
         if (message.mentions.channels.first().type != "text") {
-            return message.reply("Günlük kaydı tutacağım kanal metin kanalı olmak zorunda!")
-                .then(msg => {
-                    msg.delete({ timeout: 5000});
+            return message
+                .reply(
+                    "Günlük kaydı tutacağım kanal metin kanalı olmak zorunda!"
+                )
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
                 });
         }
 
@@ -27,13 +31,18 @@ module.exports = {
 
         try {
             await db.set("logch_" + message.guild.id, logch.id);
-            message.channel.send(`Günlük kaydı kanalı başarıyla ${logch} olarak ayarlandı.`)
-                .then(msg => {
+            message.channel
+                .send(
+                    `Günlük kaydı kanalı başarıyla ${logch} olarak ayarlandı.`
+                )
+                .then((msg) => {
                     msg.delete({ timeout: 5000 });
                 });
         } catch (error) {
             console.error(error);
-            message.channel.send("Günlük kaydı kanalı ayarlanırken bir hatayla karşılaşıyorum.");
+            message.channel.send(
+                "Günlük kaydı kanalı ayarlanırken bir hatayla karşılaşıyorum."
+            );
         }
     }
-}
+};
