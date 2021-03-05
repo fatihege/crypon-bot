@@ -25,6 +25,7 @@ Eğer sunucunuzda başka botlar varsa ve önekler karışıyorsa öneki de deği
 | reload | cmdreload, commandreload, yenidenyukle	| Seçtiğiniz komutu yeniden yükleyin. |
 | rmrole | removerole, rolkaldir | Belirlediğiniz üyeden istediğiniz rolü kaldırın. |
 | setautorole | setarole, orolayarla, otorolayarla | Sunucuya katılan üyelere verilecek olan birincil rolü seçin. |
+| setnickname | setnick, takmaad | Bir üyenin takma adını değiştirin. |
 | sprefix | setprefix, setpref, prefixayarla | Botun önekini değiştirin. |
 | sinfo | serverinfo, sbilgi, sunucubilgi | Sunucu bilgileri. |
 | unban | userunban, kullaniciengelkaldir	| Bir kullanıcının engelini kaldırın. |
@@ -55,6 +56,7 @@ If you have other bots on your server and the prefixes are getting mixed up, you
 | reload | cmdreload, commandreload, yenidenyukle	| Reload the command of your choice. |
 | rmrole | removerole, rolkaldir | Remove the role you want from the member you specified. |
 | setautorole | setarole, orolayarla, otorolayarla | Choose the primary role that will be given to members who join the server. |
+| setnickname | setnick, takmaad | Change a member's nickname. |
 | sprefix | setprefix, setpref, prefixayarla | Change the bot's prefix. |
 | sinfo | serverinfo, sbilgi, sunucubilgi | Server information. |
 | unban | userunban, kullaniciengelkaldir	| Unban a user. |
