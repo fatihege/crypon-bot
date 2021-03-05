@@ -14,7 +14,7 @@ dateFormat.i18n = {
         "Çarşamba",
         "Perşembe",
         "Cuma",
-        "Cumartesi",
+        "Cumartesi"
     ],
     monthNames: [
         "Ock",
@@ -40,9 +40,9 @@ dateFormat.i18n = {
         "Eylül",
         "Ekim",
         "Kasım",
-        "Aralık",
+        "Aralık"
     ],
-    timeNames: ["ö", "s", "öm", "ös", "Ö", "S", "ÖÖ", "ÖS"],
+    timeNames: ["ö", "s", "öm", "ös", "Ö", "S", "ÖÖ", "ÖS"]
 };
 
 module.exports = {
@@ -57,14 +57,20 @@ module.exports = {
         if (!message.mentions.users.first()) {
             const user = message.author;
             const member = message.member;
-            const userRegisteredAt = dateFormat(user.createdAt, "d mmmm dddd yyyy, h.MM.ss TT");
-            const userJoinedAt = dateFormat(member.joinedAt, "d mmmm dddd yyyy, h.MM.ss TT");
+            const userRegisteredAt = dateFormat(
+                user.createdAt,
+                "d mmmm dddd yyyy, h.MM.ss TT"
+            );
+            const userJoinedAt = dateFormat(
+                member.joinedAt,
+                "d mmmm dddd yyyy, h.MM.ss TT"
+            );
             let commandEmbed = {
                 color: 0xe60ffa,
                 title: message.author.username + " Kullanıcısının Bilgileri",
                 description: `**Kullanıcı adınız:** ${message.author.username}\n**ID:** ${message.author.id}\n**Hesap oluşturma:** ${userRegisteredAt}\n**Sunucuya katılma:** ${userJoinedAt}\n**Roller:** `
-            }
-            member.roles.cache.map(role => {
+            };
+            member.roles.cache.map((role) => {
                 if (role.name[0] == "@") {
                     let r = message.guild.roles.cache.get(role.id).name;
                     commandEmbed.description += r + " ";
@@ -77,14 +83,20 @@ module.exports = {
         } else {
             const user = message.mentions.users.first();
             const member = message.mentions.members.first();
-            const userRegisteredAt = dateFormat(user.createdAt, "d mmmm dddd yyyy, h.MM.ss TT");
-            const userJoinedAt = dateFormat(member.joinedAt, "d mmmm dddd yyyy, h.MM.ss TT");
+            const userRegisteredAt = dateFormat(
+                user.createdAt,
+                "d mmmm dddd yyyy, h.MM.ss TT"
+            );
+            const userJoinedAt = dateFormat(
+                member.joinedAt,
+                "d mmmm dddd yyyy, h.MM.ss TT"
+            );
             let commandEmbed = {
                 color: 0xe60ffa,
                 title: user.username + " Kullanıcısının Bilgileri",
                 description: `**Kullanıcı adı:** ${user.username}\n**ID:** ${user.id}\n**Hesap oluşturma:** ${userRegisteredAt}\n**Sunucuya katılma:** ${userJoinedAt}\n**Roller:** `
-            }
-            member.roles.cache.map(role => {
+            };
+            member.roles.cache.map((role) => {
                 if (role.name[0] == "@") {
                     let r = message.guild.roles.cache.get(role.id).name;
                     commandEmbed.description += r + " ";
@@ -96,4 +108,4 @@ module.exports = {
             message.channel.send({ embed: commandEmbed });
         }
     }
-}
+};
