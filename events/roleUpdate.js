@@ -21,7 +21,7 @@ module.exports = {
                                 oldRole.hexColor
                             }\n**Bahsedilebilir:** ${
                                 oldRole.mentionable ? "Evet" : "Hayır"
-                            }\n**Bulunduğu Sıra:** ${oldRole.position}`
+                            }`
                         },
                         {
                             name: "|-**Sonra**-|",
@@ -29,7 +29,7 @@ module.exports = {
                                 newRole.hexColor
                             }\n**Bahsedilebilir:** ${
                                 newRole.mentionable ? "Evet" : "Hayır"
-                            }\n**Bulunduğu Sıra:** ${newRole.position}`
+                            }`
                         }
                     ]
                 };
