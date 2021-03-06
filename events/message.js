@@ -18,7 +18,7 @@ module.exports = {
             ) {
                 message.channel
                     .send(
-                        `Bu sunucudaki prefixim \`${prefix}\`\nBütün komutlarımın listesine ulaşmak için \`${prefix}help\` komutunu kullanabilirsin.`
+                        `Bu sunucudaki önekim \`${prefix}\`\nBütün komutlarımın listesine ulaşmak için \`${prefix}help\` komutunu kullanabilirsin.`
                     )
                     .then((msg) => {
                         msg.delete({ timeout: 5000 });
