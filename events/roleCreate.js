@@ -18,7 +18,7 @@ module.exports = {
                         role.hexColor
                     }\n**Bahsedilebilir:** ${
                         role.mentionable ? "Evet" : "Hayır"
-                    }\n**Bulunduğu Sıra:** ${role.position}`
+                    }`
                 };
 
                 return logch.send({ embed: logEmbed });
