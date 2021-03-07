@@ -19,26 +19,23 @@ module.exports = {
                 };
 
                 messages.sort().map((message) => {
-                    if (logEmbed.description.length < 2048) {
-                        if (
-                            message.author.bot ||
-                            message.channel.name == logch.name
-                        ) {
-                            logEmbed.description += "";
-                        } else {
-                            logEmbed.description += `[**${message.author.username}#${message.author.discriminator}**] ${message.content}\n`;
-                        }
+                    if (
+                        message.author.bot ||
+                        message.channel.name == logch.name
+                    ) {
+                        logEmbed.description += "";
+                    } else {
+                        logEmbed.description += `[**${message.author.username}#${message.author.discriminator}**] ${message.content}\n`;
                     }
                 });
 
-                if (logEmbed.description.length > 2048) {
-                    let tempText = logEmbed.description.slice(2048, -1);
-                    logEmbed.description = logEmbed.description.slice(0, 2048);
-                    logch.send({ embed: logEmbed }).then(() => {
-                        logEmbed.description = tempText;
-                        return logch.send({ embed: logEmbed });
-                    });
-                } else {
+                if (logEmbed.description > 2048) {
+                    logEmbed.description =
+                        "Mesaj boyutu 2048 karakteri aştığı için görüntülenemiyor.";
+                    return logch.send({ embed: logEmbed });
+                }
+
+                if (logEmbed.description != "") {
                     return logch.send({ embed: logEmbed });
                 }
             }
