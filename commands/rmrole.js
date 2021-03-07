@@ -12,6 +12,10 @@ module.exports = {
             (role) => role === message.mentions.roles.first()
         );
 
+        if (member.id == message.author.id) {
+            return message.reply(`Bir rolü kendinden kaldıramazsın!`);
+        }
+
         if (member == undefined) {
             return message.reply(`Lütfen geçerli bir üye etiketle!`);
         }
