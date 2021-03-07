@@ -23,7 +23,7 @@ module.exports = {
                 });
         }
 
-        if (member.id == message.author.id) {
+        if (member.id == message.author.id && member.id != admin.id) {
             return message
                 .reply(`Bir rolü kendinden kaldıramazsın!`)
                 .then((msg) => {
