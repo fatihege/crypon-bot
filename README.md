@@ -29,6 +29,8 @@ Eğer sunucunuzda başka botlar varsa ve önekler karışıyorsa öneki de deği
 | sprefix | setprefix, setpref, prefixayarla | Botun önekini değiştirin. |
 | sinfo | serverinfo, sbilgi, sunucubilgi | Sunucu bilgileri. |
 | unban | userunban, kullaniciengelkaldir	| Bir kullanıcının engelini kaldırın. |
+| unlogchannel | unlogch, gunlukkanalisil	| Daha önceden seçilen günlük kaydı kanalını silin. |
+| unwlcchannel | unwlcch, hosgeldinizkanalisil, hgkanalisil	| Daha önceden seçilen üyeleri karşılama kanalını silin. |
 | wlcchannel | wlcch, welcomech, welcomechannel, hgkanali, hosgeldinizkanali | Sunucuya katılan üyelerin karşılanacağı kanalı belirtin. |
 
 ## English
@@ -60,4 +62,6 @@ If you have other bots on your server and the prefixes are getting mixed up, you
 | sprefix | setprefix, setpref, prefixayarla | Change the bot's prefix. |
 | sinfo | serverinfo, sbilgi, sunucubilgi | Server information. |
 | unban | userunban, kullaniciengelkaldir	| Unban a user. |
+| unlogchannel | unlogch, gunlukkanalisil	| Delete the previously selected logging channel. |
+| unwlcchannel | unwlcch, hosgeldinizkanalisil, hgkanalisil	| Delete the previously selected welcome channel. |
 | wlcchannel | wlcch, welcomech, welcomechannel, hgkanali, hosgeldinizkanali | Specify the channel through which members joining the server will be greeted. |
