@@ -19,26 +19,29 @@ module.exports = {
                 };
 
                 messages.sort().map((message) => {
-                    if (
-                        message.author.bot ||
-                        message.channel.name == logch.name
-                    ) {
-                        logEmbed.description += "";
-                    } else {
-                        logEmbed.description += `[**${message.author.username}#${message.author.discriminator}**] ${message.content}\n`;
+                    if (logEmbed.description.length < 2048) {
+                        if (
+                            message.author.bot ||
+                            message.channel.name == logch.name
+                        ) {
+                            logEmbed.description += "";
+                        } else {
+                            logEmbed.description += `[**${message.author.username}#${message.author.discriminator}**] ${message.content}\n`;
+                        }
                     }
                 });
 
-                if (logEmbed.description != "") {
+                if (logEmbed.description.length > 2048) {
+                    let tempText = logEmbed.description.slice(2048, -1);
+                    logEmbed.description = logEmbed.description.slice(0, 2048);
+                    logch.send({ embed: logEmbed }).then(() => {
+                        logEmbed.description = tempText;
+                        return logch.send({ embed: logEmbed });
+                    });
+                } else {
                     return logch.send({ embed: logEmbed });
                 }
             }
-        } else {
-            messages
-                .first()
-                .channel.send(
-                    "Sunucu bilgisi alınamadı. Lütfen geliştiricimle iletişime geçin: https://fatihege.github.io/"
-                );
         }
     }
 };
