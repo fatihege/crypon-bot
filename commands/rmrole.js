@@ -11,17 +11,40 @@ module.exports = {
         const taggedRole = message.guild.roles.cache.find(
             (role) => role === message.mentions.roles.first()
         );
+        const admin = message.guild.members.cache.find((m) =>
+            m.hasPermission("ADMINISTRATOR")
+        );
+
+        if (admin.id == member.id && message.author.id != admin.id) {
+            return message
+                .reply("Sunucu yöneticisinden herhangi bir rolü kaldıramazsın!")
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
+        }
 
         if (member.id == message.author.id) {
-            return message.reply(`Bir rolü kendinden kaldıramazsın!`);
+            return message
+                .reply(`Bir rolü kendinden kaldıramazsın!`)
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
         }
 
         if (member == undefined) {
-            return message.reply(`Lütfen geçerli bir üye etiketle!`);
+            return message
+                .reply(`Lütfen geçerli bir üye etiketle!`)
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
         }
 
         if (taggedRole == undefined) {
-            return message.reply(`Lütfen geçerli bir rol etiketle!`);
+            return message
+                .reply(`Lütfen geçerli bir rol etiketle!`)
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
         }
 
         try {
