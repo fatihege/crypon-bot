@@ -29,7 +29,35 @@ module.exports = {
                     description: `**Önce:** ${oldMessage.content}\n**Sonra:** ${newMessage.content}`
                 };
 
-                return logch.send({ embed: logEmbed });
+                if (logEmbed.description.length > 2048) {
+                    logEmbed = {
+                        color: 0xe60ffa,
+                        author: {
+                            name: `${oldMessage.author.username}#${oldMessage.author.discriminator}`,
+                            icon_url: oldMessage.author.displayAvatarURL({
+                                format: "png",
+                                dynamic: true
+                            })
+                        },
+                        title: `Mesaj Düzenlendi - #${oldMessage.channel.name}`,
+                        description: `**Önce:** ${oldMessage.content}`
+                    };
+                    logch.send({ embed: logEmbed }).then(() => {
+                        logEmbed = {
+                            color: 0xe60ffa,
+                            author: {
+                                name: `${oldMessage.author.username}#${oldMessage.author.discriminator}`,
+                                icon_url: oldMessage.author.displayAvatarURL({
+                                    format: "png",
+                                    dynamic: true
+                                })
+                            },
+                            title: `Mesaj Düzenlendi - #${oldMessage.channel.name}`,
+                            description: `**Sonra:** ${newMessage.content}`
+                        };
+                        logch.send({ embed: logEmbed });
+                    });
+                }
             }
         }
     }
