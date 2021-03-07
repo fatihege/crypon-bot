@@ -5,6 +5,8 @@ module.exports = {
     once: false,
     async run(message, client) {
         if (message.guild) {
+            if (message.author.bot) return;
+
             if (await db.fetch("logch_" + message.guild.id)) {
                 const logChannel = await db.fetch("logch_" + message.guild.id);
                 const prefix = await db.fetch("prefix_" + message.guild.id);
@@ -35,7 +37,10 @@ module.exports = {
                     description: message.content
                 };
 
-                if (message.author.bot) return;
+                if (logEmbed.description.length > 2048) {
+                    logEmbed.description = logEmbed.description.slice(0, 2048);
+                    return logch.send({ embed: logEmbed });
+                }
 
                 return logch.send({ embed: logEmbed });
             }
