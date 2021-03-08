@@ -37,8 +37,9 @@ module.exports = {
                     description: message.content
                 };
 
-                if (logEmbed.description.length > 2048) {
-                    logEmbed.description = logEmbed.description.slice(0, 2048);
+                if (logEmbed.description.length > 2000) {
+                    logEmbed.description =
+                        "Mesaj boyutu 2000 karakteri aştığı için görüntülenemiyor.";
                     return logch.send({ embed: logEmbed });
                 }
 
