@@ -29,9 +29,9 @@ module.exports = {
                     }
                 });
 
-                if (logEmbed.description > 2048) {
+                if (logEmbed.description.length > 2000) {
                     logEmbed.description =
-                        "Mesaj boyutu 2048 karakteri aştığı için görüntülenemiyor.";
+                        "Mesaj boyutu 2000 karakteri aştığı için görüntülenemiyor.";
                     return logch.send({ embed: logEmbed });
                 }
 
