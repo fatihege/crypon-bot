@@ -7,7 +7,7 @@ module.exports = {
     args: true,
     usage: "<role>",
     guildOnly: true,
-    permissions: "MANAGE_MESSAGES",
+    permissions: "MANAGE_ROLES",
     async run(message, args, client) {
         if (!message.mentions.roles.first()) {
             message.reply("Lütfen otomatik eklenecek rolü seç!").then((msg) => {
