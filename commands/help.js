@@ -17,9 +17,14 @@ module.exports = {
         const messageEmbed = {
             color: 0xff14b9,
             title: botName + " Komutları",
-            description: `Bende kullanabileceğin bütün komutların listesi.\n**${commands
-                .map((command) => command.name)
-                .join("\n")}**\n\nDaha detaylı bilgi almak için ${message.guild.name} sunucusunda \`${prefix}help <command>\` komutunu kullanabilirsiniz.`
+            description: `Bende kullanabileceğin bütün komutların listesi.\n\n${commands
+                .map(
+                    (command) =>
+                        "**" + command.name + "**: " + command.description
+                )
+                .join("\n")}\n\nDaha detaylı bilgi almak için **${
+                message.guild.name
+            }** sunucusunda \`${prefix}help <command>\` komutunu kullanabilirsiniz.`
         };
 
         if (!args.length) {
