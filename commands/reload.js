@@ -24,9 +24,9 @@ module.exports = {
             return message.channel.send(`Böyle bir komut tanımlı değil!`);
         }
 
-        const commandFiles = fs.readdirSync("./");
+        const commandFiles = fs.readdirSync("./commands");
         const fileName = commandFiles.find((file) =>
-            fs.readdirSync(`./${file}`).includes(`${commandName}.js`)
+            fs.readFileSync(`./commands/${file}`)
         );
 
         delete require.cache[require.resolve(`./${command.name}.js`)];
