@@ -19,9 +19,9 @@ module.exports = {
                 .catch((err) => {
                     console.error(err);
                 });
-        } else if (amount < 2 || amount > 100) {
+        } else if (amount < 1 || amount > 100) {
             return message
-                .reply("Silinecek mesaj sayısı 2 ile 100 arasında olmalıdır!")
+                .reply("Silinecek mesaj sayısı 1 ile 100 arasında olmalıdır!")
                 .then((msg) => {
                     msg.delete({ timeout: 5000 });
                 })
