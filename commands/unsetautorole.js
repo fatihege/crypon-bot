@@ -2,7 +2,7 @@ const db = require("wio.db");
 
 module.exports = {
     name: "unsetautorole",
-    description: "Otomatik rol etkinliğini kaldırın.",
+    description: "Daha önceden seçilmiş olan otomatik rol etkinliğini kaldırın.",
     aliases: ["unsetarole", "orolsil", "otorolsil"],
     args: false,
     usage: null,
