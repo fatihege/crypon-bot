@@ -16,7 +16,8 @@ module.exports = {
             ? await db.fetch("prefix_" + message.guild.id)
             : await db.fetch("prefix_dm_" + message.channel.id);
 
-        const messageEmbed = {
+        const guildOrChannel = message.guild ? message.guild.name : null;
+        let messageEmbed = {
             color: 0xff14b9,
             title: botName + " Komutları",
             description: `Bende kullanabileceğin bütün komutların listesi.\n\n${commands
@@ -26,8 +27,19 @@ module.exports = {
                 )
                 .join(
                     "\n"
-                )}\n\nDaha detaylı bilgi almak için **test** sunucusunda \`${prefix}help <command>\` komutunu kullanabilirsiniz.`
+                )}\n\nDaha detaylı bilgi almak için **${guildOrChannel}** sunucusunda \`${prefix}help <command>\` komutunu kullanabilirsiniz.`
         };
+
+        if (!guildOrChannel) {
+            messageEmbed.description = `Bende kullanabileceğin bütün komutların listesi.\n\n${commands
+                .map(
+                    (command) =>
+                        "**" + command.name + "**: " + command.description
+                )
+                .join(
+                    "\n"
+                )}\n\nDaha detaylı bilgi almak için \`${prefix}help <command>\` komutunu kullanabilirsiniz.`;
+        }
 
         if (!args.length) {
             return message.author
