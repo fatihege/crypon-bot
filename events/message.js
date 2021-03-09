@@ -4,12 +4,13 @@ module.exports = {
     name: "message",
     once: false,
     async run(message, client) {
+        var prefix;
         if (message.guild && message.guild.available === true) {
             let guildId = client.guilds.cache.get(message.guild.id).id;
             if (await db.fetch(`prefix_${guildId}`)) {
-                var prefix = await db.fetch(`prefix_${guildId}`);
+                prefix = await db.fetch(`prefix_${guildId}`);
             } else {
-                var prefix = "!c";
+                prefix = "!c";
             }
 
             if (
@@ -25,6 +26,11 @@ module.exports = {
                     });
                 return;
             }
+        }
+
+        if (message.channel.type == "dm") {
+            await db.set("prefix_dm_" + message.channel.id, "!c");
+            prefix = await db.fetch("prefix_dm_" + message.channel.id);
         }
 
         if (!message.content.startsWith(prefix) || message.author.bot) return;
