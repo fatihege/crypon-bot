@@ -51,6 +51,12 @@ module.exports = {
     once: false,
     async run(role) {
         if (role.guild) {
+            if (
+                (await db.fetch("autorole_" + role.guild.id)) &&
+                (await db.fetch("autorole_" + role.guild.id)) == role.id
+            ) {
+                await db.delete("autorole_" + role.guild.id);
+            }
             if (await db.fetch("logch_" + role.guild.id)) {
                 const logChannel = await db.fetch("logch_" + role.guild.id);
                 const logch = role.guild.channels.cache.find(
