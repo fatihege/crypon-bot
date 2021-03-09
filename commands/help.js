@@ -12,7 +12,9 @@ module.exports = {
     permissions: null,
     async run(message, args, client) {
         const { commands } = message.client;
-        const prefix = (await db.fetch("prefix_" + message.guild.id)) || "!c";
+        const prefix = message.guild
+            ? await db.fetch("prefix_" + message.guild.id)
+            : await db.fetch("prefix_dm_" + message.channel.id);
 
         const messageEmbed = {
             color: 0xff14b9,
@@ -22,9 +24,9 @@ module.exports = {
                     (command) =>
                         "**" + command.name + "**: " + command.description
                 )
-                .join("\n")}\n\nDaha detaylı bilgi almak için **${
-                message.guild.name
-            }** sunucusunda \`${prefix}help <command>\` komutunu kullanabilirsiniz.`
+                .join(
+                    "\n"
+                )}\n\nDaha detaylı bilgi almak için **test** sunucusunda \`${prefix}help <command>\` komutunu kullanabilirsiniz.`
         };
 
         if (!args.length) {
