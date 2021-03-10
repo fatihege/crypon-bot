@@ -10,10 +10,7 @@ module.exports = {
     guildOnly: true,
     permissions: "KICK_MEMBERS",
     async run(message, args, client) {
-        if (
-            message.mentions.users.first().bot &&
-            message.mentions.users.first().username == botName
-        ) {
+        if (args[0] == client.user.id) {
             return message
                 .reply(`Hey sen! Beni bu komutla **atamazsın!**`)
                 .then((msg) => {
@@ -21,7 +18,7 @@ module.exports = {
                 });
         }
 
-        if (!args.length || args.length < 2) {
+        if (!args.length || args.length < 1) {
             if (await db.fetch("prefix_" + message.guild.id)) {
                 var prefix = await db.fetch("prefix_" + message.guild.id);
             } else {
@@ -36,15 +33,11 @@ module.exports = {
                 });
         }
 
-        if (!message.mentions.members.first()) {
-            return message
-                .reply("Lütfen sunucudan atmak istediğin üyeyi etiketle!")
-                .then((msg) => {
-                    msg.delete({ timeout: 5000 });
-                });
-        }
-
-        if (message.mentions.members.first().hasPermission("ADMINISTRATOR")) {
+        if (
+            message.guild.members.cache
+                .find((m) => m.id == args[0])
+                .hasPermission("ADMINISTRATOR")
+        ) {
             return message
                 .reply("Yavaş ol, bir yönetici kendi sunucusundan atılamaz!")
                 .then((msg) => {
@@ -52,20 +45,39 @@ module.exports = {
                 });
         }
 
-        const reason = args.slice(1).join(" ");
-        const taggedUser = message.mentions.members.first();
+        const reason = args.slice(1).join(" ") || null;
+        const memberId = args[0];
+        const taggedUser = message.guild.members.cache.find(
+            (m) => m.id == memberId
+        );
 
         try {
-            taggedUser.kick();
-            message.channel.send(
-                `${taggedUser} sunucudan başarıyla **atıldı!**\n**Sebebi:** ${reason}`
-            );
+            taggedUser.kick(reason);
+            if (reason) {
+                return message.channel
+                    .send(
+                        `<@${taggedUser.id}> sunucudan başarıyla **atıldı!**\n**Sebebi:** ${reason}`
+                    )
+                    .then((msg) => {
+                        msg.delete({ timeout: 5000 });
+                    });
+            } else {
+                return message.channel
+                    .send(`<@${taggedUser.id}> sunucudan başarıyla **atıldı!**`)
+                    .then((msg) => {
+                        msg.delete({ timeout: 5000 });
+                    });
+            }
         } catch (error) {
             if (error) {
                 console.error(error);
-                message.channel.send(
-                    `${taggedUser} sunucudan atılırken bir **hata oluştu...**`
-                );
+                message.channel
+                    .send(
+                        `<@${taggedUser.id}> sunucudan atılırken bir **hata oluştu.**`
+                    )
+                    .then((msg) => {
+                        msg.delete({ timeout: 5000 });
+                    });
             }
         }
     }
