@@ -2,7 +2,7 @@ const pretty = require("pretty-ms");
 
 module.exports = {
     name: "stats",
-    description: "Sunucu bilgileri.",
+    description: "Botun istatistiklerini görün.",
     aliases: ["statistics", "istatistik", "istatistikler"],
     args: false,
     usage: null,
