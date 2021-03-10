@@ -3,8 +3,7 @@ const db = require("wio.db");
 
 module.exports = {
     name: "help",
-    description:
-        "Botta kullanabileceğiniz bütün komutların listesini çıkartır.",
+    description: "Botta kullanabileceğiniz bütün komutların listesini çıkartır.",
     aliases: ["yardim"],
     args: false,
     usage: null,
