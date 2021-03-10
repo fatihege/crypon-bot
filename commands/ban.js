@@ -26,6 +26,14 @@ module.exports = {
                 });
         }
 
+        if (user == client.user.id) {
+            return message
+                .reply("Hey sen! Beni bu komutu kullanarak engelleyemezsin.")
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
+        }
+
         const prefix = await db.fetch("prefix_" + message.guild.id);
 
         if (args.length < 1) {
