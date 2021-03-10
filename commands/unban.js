@@ -16,15 +16,17 @@ module.exports = {
             message.guild.members.unban(args[0]);
             message.channel
                 .send(
-                    `${args[0]} ID'li kullanıcının yasağı başarıyla kaldırıldı!`
+                    `<@${args[0]}> kullanıcısının yasağı başarıyla kaldırıldı!`
                 )
                 .then((msg) => {
                     msg.delete({ timeout: 5000 });
                 });
         } catch (error) {
-            message.channel.send(
-                `Kullanıcının engeli kaldırılırken bir sorun oluştu.`
-            );
+            message.channel
+                .send(`Kullanıcının engeli kaldırılırken bir sorun oluştu.`)
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
             console.error(error);
         }
     }
