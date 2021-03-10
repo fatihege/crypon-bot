@@ -3,11 +3,11 @@ module.exports = {
     description: "Bir üyenin takma adını değiştirin.",
     aliases: ["setnick", "takmaad"],
     args: true,
-    usage: "<member> <nickname>",
+    usage: "<member-id> <new-nickname>",
     guildOnly: true,
     permissions: "CHANGE_NICKNAME",
     run(message, args, client) {
-        if (!message.mentions.members.first()) {
+        if (!args.length || args.length < 2) {
             return message
                 .reply("Lütfen takma adı değiştirilecek üyeyi seç!")
                 .then((msg) => {
@@ -15,25 +15,27 @@ module.exports = {
                 });
         }
 
-        const tag = args.find((arg) => arg.startsWith("<@"));
+        const memberid = args[0];
         var nick = args
             .join(" ")
-            .split(tag + " ")
+            .split(memberid + " ")
             .toString()
             .trim()
             .replace(",", "")
-            .replace(tag, "");
-        const taggedMember = message.mentions.members.first();
+            .replace(memberid, "");
+        const member = message.guild.members.cache.find(
+            (member) => member.id == memberid
+        );
 
         if (!nick || nick.trim() == "") {
             return message.reply("Lütfen yeni takma adı girin!");
         }
 
         try {
-            taggedMember.setNickname(nick);
+            member.setNickname(nick);
             message.channel
                 .send(
-                    `<@${taggedMember.id}> kullanıcısının takma adı başarıyla ${nick} olarak ayarlandı.`
+                    `<@${member.id}> kullanıcısının takma adı başarıyla **${nick}** olarak ayarlandı.`
                 )
                 .then((msg) => {
                     msg.delete({ timeout: 5000 });
