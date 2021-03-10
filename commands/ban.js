@@ -5,18 +5,20 @@ module.exports = {
     description: "Bir üyeyi sunucudan engelleyin.",
     aliases: ["mban", "memberban", "uyeengelle", "uengelle"],
     args: true,
-    usage: "<member> <reason>",
+    usage: "<member> <reason[optional]>",
     guildOnly: true,
     permissions: "BAN_MEMBERS",
     async run(message, args, client) {
-        if (!message.mentions.users.size) {
-            return message.reply(
-                "Lütfen engellemek istediğiniz üyeyi etiketleyin!"
-            );
+        if (!args.length) {
+            return message
+                .reply("Lütfen engellemek istediğin üyenin ID'sini yaz!")
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
         }
-        const taggedUser = message.mentions.users.first();
+        const user = args[0];
 
-        if (taggedUser.id == message.author.id) {
+        if (user == message.author.id) {
             return message
                 .reply("Pişşt! Kendini engelleyemezsin.")
                 .then((msg) => {
@@ -26,24 +28,36 @@ module.exports = {
 
         const prefix = await db.fetch("prefix_" + message.guild.id);
 
-        if (args.length < 2) {
+        if (args.length < 1) {
             return message.reply(
                 `Lütfen gerekli argümanları belirt!\nBu komutun kullanımı: \`${prefix}${this.name} ${this.usage}\``
             );
         }
 
-        const reason = args.slice(1).join(" ");
+        const reason = args.slice(1).join(" ") || null;
 
         try {
-            message.guild.members.ban(taggedUser);
-            message.channel.send(
-                `**${taggedUser}** \`${reason}\` nedeniyle engellendi.`
-            );
+            message.guild.members.ban(user, { reason: reason });
+            if (reason) {
+                message.channel
+                    .send(`<@${user}> \`${reason}\` nedeniyle engellendi.`)
+                    .then((msg) => {
+                        msg.delete({ timeout: 5000 });
+                    });
+            } else {
+                message.channel
+                    .send(`<@${user}> başarıyla engellendi.`)
+                    .then((msg) => {
+                        msg.delete({ timeout: 5000 });
+                    });
+            }
         } catch (error) {
             console.error(error);
-            message.channel.send(
-                `${taggedUser} engellenirken bir hata oluştu!`
-            );
+            message.channel
+                .send(`<@${user}> engellenirken bir hata oluştu!`)
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
         }
     }
 };
