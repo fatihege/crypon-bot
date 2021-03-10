@@ -6,7 +6,7 @@ module.exports = {
     description: "Bir üyeyi sunucudan atın.",
     aliases: ["mkick", "uyeat"],
     args: true,
-    usage: "<member> <reason>",
+    usage: "<member> <reason[optional]>",
     guildOnly: true,
     permissions: "KICK_MEMBERS",
     async run(message, args, client) {
