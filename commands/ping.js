@@ -9,7 +9,7 @@ module.exports = {
     run(message, args, client) {
         const pingEmbed = {
             color: 0xe60ffa,
-            description: `Ping değerim: **${client.ws.ping}ms**`
+            description: `Ping değerim: **${client.ws.ping} ms**`
         };
 
         message.channel.send({ embed: pingEmbed });
