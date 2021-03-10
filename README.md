@@ -28,6 +28,7 @@ Eğer sunucunuzda başka botlar varsa ve önekler karışıyorsa öneki de deği
 | setnickname | setnick, takmaad | Bir üyenin takma adını değiştirin. |
 | sprefix | setprefix, setpref, prefixayarla | Botun önekini değiştirin. |
 | sinfo | serverinfo, sbilgi, sunucubilgi | Sunucu bilgileri. |
+| stats | statistics, istatistik, istatistikler | Botun istatistiklerini görün. |
 | unban | userunban, kullaniciengelkaldir	| Bir kullanıcının engelini kaldırın. |
 | unlogchannel | unlogch, gunlukkanalisil	| Daha önceden seçilen günlük kaydı kanalını silin. |
 | unsetautorole | unsetarole, orolsil, otorolsil	| Daha önceden seçilmiş olan otomatik rol etkinliğini kaldırın. |
@@ -62,6 +63,7 @@ If you have other bots on your server and the prefixes are getting mixed up, you
 | setnickname | setnick, takmaad | Change a member's nickname. |
 | sprefix | setprefix, setpref, prefixayarla | Change the bot's prefix. |
 | sinfo | serverinfo, sbilgi, sunucubilgi | Server information. |
+| stats | statistics, istatistik, istatistikler | See the bot's statistics. |
 | unban | userunban, kullaniciengelkaldir	| Unban a user. |
 | unlogchannel | unlogch, gunlukkanalisil	| Delete the previously selected logging channel. |
 | unsetautorole | unsetarole, orolsil, otorolsil	| Remove previously selected auto role activity. |
