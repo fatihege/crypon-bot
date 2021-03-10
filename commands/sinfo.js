@@ -55,7 +55,6 @@ module.exports = {
     args: false,
     usage: null,
     guildOnly: true,
-    cooldown: 5,
     permissions: null,
     async run(message, args, client) {
         const server = message.guild;
