@@ -3,7 +3,7 @@ module.exports = {
     description: "Belirttiğiniz sayı kadar mesajı silin.",
     aliases: ["messagedelete", "mdelete", "msil", "mesajsil"],
     args: true,
-    usage: "<count[int]>",
+    usage: "<miktar>",
     guildOnly: true,
     permissions: "MANAGE_MESSAGES",
     run(message, args, client) {
@@ -29,7 +29,6 @@ module.exports = {
                     console.error(err);
                 });
         }
-        message.delete();
         message.channel.bulkDelete(amount);
     }
 };
