@@ -53,15 +53,21 @@ module.exports = {
             if (command.usage) {
                 reply += `\nBu komutun kullanımı: \`${prefix}${command.name} ${command.usage}\``;
             }
-            return message.channel.send(reply);
+            return message.channel.send(reply).then((msg) => {
+                msg.delete({ timeout: 5000 });
+            });
         }
 
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
-                return message.channel.send(
-                    `**Bunu yapamazsın ${message.author}!** Yeterli yetkin yok.`
-                );
+                return message.channel
+                    .send(
+                        `**Bunu yapamazsın ${message.author}!** Yeterli yetkin yok.`
+                    )
+                    .then((msg) => {
+                        msg.delete({ timeout: 5000 });
+                    });
             }
         }
 
@@ -69,9 +75,11 @@ module.exports = {
             command.run(message, args, client);
         } catch (error) {
             console.error(error);
-            message.channel.send(
-                `Bu komut çalıştırılırken bir hata meydana geldi.`
-            );
+            message.channel
+                .send(`Bu komut çalıştırılırken bir hata meydana geldi.`)
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
         }
     }
 };
