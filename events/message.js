@@ -49,7 +49,7 @@ module.exports = {
                 reply += `\nBu komutun kullanımı: \`${prefix}${command.name} ${command.usage}\``;
             }
             return message.channel.send(reply).then((msg) => {
-                msg.delete({ timeout: 5000 });
+                msg.delete({ timeout: 7000 });
             });
         }
 
@@ -61,7 +61,7 @@ module.exports = {
                         `**Bunu yapamazsın ${message.author}!** Yeterli yetkin yok.`
                     )
                     .then((msg) => {
-                        msg.delete({ timeout: 5000 });
+                        msg.delete({ timeout: 7000 });
                     });
             }
         }
@@ -73,7 +73,7 @@ module.exports = {
             message.channel
                 .send(`Bu komut çalıştırılırken bir hata meydana geldi.`)
                 .then((msg) => {
-                    msg.delete({ timeout: 5000 });
+                    msg.delete({ timeout: 7000 });
                 });
         }
     }
