@@ -5,23 +5,13 @@ module.exports = {
     description: "Sunucuda olup bitenlerin kaydını tutacağınız kanalı seçin.",
     aliases: ["logch", "setlogch", "logkanali", "gunlukkanali"],
     args: true,
-    usage: "<channel>",
+    usage: "<kanal>",
     guildOnly: true,
     permissions: "MANAGE_CHANNEL",
     async run(message, args, client) {
         if (!message.mentions.channels.first()) {
             message
                 .reply("Lütfen günlük kaydını tutacağım kanalı seç!")
-                .then((msg) => {
-                    msg.delete({ timeout: 5000 });
-                });
-        }
-
-        if (message.mentions.channels.first().type != "text") {
-            return message
-                .reply(
-                    "Günlük kaydı tutacağım kanal metin kanalı olmak zorunda!"
-                )
                 .then((msg) => {
                     msg.delete({ timeout: 5000 });
                 });
