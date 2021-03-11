@@ -17,6 +17,7 @@ Eğer sunucunuzda başka botlar varsa ve önekler karışıyorsa öneki de deği
 | grole | giverole, rolver | Belirlediğiniz üyeye istediğiniz rolü verin. |
 | help | yardim | Botta kullanabileceğiniz bütün komutların listesini çıkartır. |
 | invite | inv, davet	| Botun davet linkini gönderir. |
+| invites | invs, davetler | Bir üyenin kaç kişiyi davet ettiğini görün. |
 | kick | mkick, uyeat	| Bir üyeyi sunucudan atın. |
 | logchannel | logch, setlogch, logkanali, gunlukkanali	| Sunucuda olup bitenlerin kaydını tutacağınız kanalı seçin. |
 | mdel | messagedelete, mdelete, msil, mesajsil	| Belirttiğiniz sayı kadar mesajı silin. |
@@ -52,6 +53,7 @@ If you have other bots on your server and the prefixes are getting mixed up, you
 | grole | giverole, rolver | Give the member you designate the role you want. |
 | help | yardim | It makes a list of all the commands you can use in the bot. |
 | invite | inv, davet	| Sends the bot's invitation link. |
+| invites | invs, davetler | See how many people a member has invited. |
 | kick | mkick, uyeat	| Kick a member from server. |
 | logchannel | logch, setlogch, logkanali, gunlukkanali	| Choose the channel you want to keep track of what is happening on the server. |
 | mdel | messagedelete, mdelete, msil, mesajsil	| Delete the number of messages you specified. |
