@@ -9,13 +9,6 @@ module.exports = {
     guildOnly: true,
     permissions: "BAN_MEMBERS",
     async run(message, args, client) {
-        if (!args.length) {
-            return message
-                .reply("Lütfen engellemek istediğin üyenin ID'sini yaz!")
-                .then((msg) => {
-                    msg.delete({ timeout: 5000 });
-                });
-        }
         const user = args[0];
 
         if (user == message.author.id) {
@@ -35,13 +28,6 @@ module.exports = {
         }
 
         const prefix = await db.fetch("prefix_" + message.guild.id);
-
-        if (args.length < 1) {
-            return message.reply(
-                `Lütfen gerekli argümanları belirt!\nBu komutun kullanımı: \`${prefix}${this.name} ${this.usage}\``
-            );
-        }
-
         const reason = args.slice(1).join(" ") || null;
 
         try {
