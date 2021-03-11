@@ -5,7 +5,7 @@ module.exports = {
     description: "Seçtiğiniz komutu yeniden yükleyin.",
     aliases: ["cmdreload", "commandreload", "yenidenyukle"],
     args: true,
-    usage: "<command>",
+    usage: "<komut>",
     guildOnly: true,
     permissions: "MANAGE_ROLES",
     run(message, args, client) {
