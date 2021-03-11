@@ -30,7 +30,7 @@ module.exports = {
             .replace(/d/gi, " Gün")
             .replace(/h/gi, " Saat")
             .replace(/m/gi, " Dakika")
-            .replace(/s/gi, " Saniye");
+            .replace(/s$/gi, " Saniye");
 
         let embed = {
             color: 0xe60ffa,
