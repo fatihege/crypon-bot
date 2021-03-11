@@ -3,7 +3,7 @@ module.exports = {
     description: "Bir üyenin kaç kişiyi davet ettiğini görün.",
     aliases: ["invs", "davetler"],
     args: false,
-    usage: "<member[optional]>",
+    usage: "<üye[opsiyonel]>",
     guildOnly: true,
     permissions: null,
     run(message, args, client) {
