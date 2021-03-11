@@ -5,7 +5,7 @@ module.exports = {
     description: "Sunucuya katılan üyelere verilecek olan birincil rolü seçin.",
     aliases: ["setarole", "orolayarla", "otorolayarla"],
     args: true,
-    usage: "<role>",
+    usage: "<rol>",
     guildOnly: true,
     permissions: "MANAGE_ROLES",
     async run(message, args, client) {
