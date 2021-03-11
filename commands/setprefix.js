@@ -1,11 +1,11 @@
 const db = require("wio.db");
 
 module.exports = {
-    name: "sprefix",
+    name: "setprefix",
     description: "Botun önekini değiştirin.",
-    aliases: ["setprefix", "setpref", "prefixayarla"],
+    aliases: ["sprefix", "setpref", "prefixayarla"],
     args: true,
-    usage: "<prefix>",
+    usage: "<önek>",
     guildOnly: true,
     permissions: "MANAGE_MESSAGES",
     async run(message, args, client) {
