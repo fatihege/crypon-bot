@@ -16,9 +16,12 @@ module.exports = {
         );
         const ping = `${client.ws.ping} ms`;
         const memoryUsageCalculation = (
-            process.memoryUsage().heapUsed / 1024 / 1024)
-                .toString()
-                .split(".");
+            process.memoryUsage().heapUsed /
+            1024 /
+            1024
+        )
+            .toString()
+            .split(".");
         const memoryUsage = `${memoryUsageCalculation[0]},${memoryUsageCalculation[1][0]}${memoryUsageCalculation[1][1]}`;
 
         const uptime = pretty(client.uptime)
