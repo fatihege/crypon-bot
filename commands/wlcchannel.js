@@ -11,7 +11,7 @@ module.exports = {
         "hosgeldinizkanali"
     ],
     args: true,
-    usage: "<channel>",
+    usage: "<kanal>",
     guildOnly: true,
     permissions: "MANAGE_CHANNELS",
     async run(message, args, client) {
