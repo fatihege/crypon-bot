@@ -1,3 +1,5 @@
+const db = require("wio.db");
+
 module.exports = {
     name: "setnickname",
     description: "Bir üyenin takma adını değiştirin.",
@@ -6,7 +8,7 @@ module.exports = {
     usage: "<üye-id> <takma-ad>",
     guildOnly: true,
     permissions: "CHANGE_NICKNAME",
-    run(message, args, client) {
+    async run(message, args, client) {
         if (!args.length || args.length < 2) {
             return message
                 .reply("Bu komut en az 2 argüman alıyor!")
@@ -15,7 +17,7 @@ module.exports = {
                 });
         }
 
-        const memberid = args[0];
+        let memberid = args[0];
         var nick = args
             .join(" ")
             .split(memberid + " ")
@@ -23,9 +25,20 @@ module.exports = {
             .trim()
             .replace(",", "")
             .replace(memberid, "");
-        const member = message.guild.members.cache.find(
+        let member = message.guild.members.cache.find(
             (member) => member.id == memberid
         );
+
+        if (!member) {
+            const prefix = await db.fetch("prefix_" + message.guild.id);
+            return message.channel
+                .send(
+                    `**${memberid}** ID'sine sahip bir üye yok. Argümanların sırasını yanlış vermiş olabilirsin, bu komutun kullanımı: \`${prefix}${this.name} ${this.usage}\``
+                )
+                .then((msg) => {
+                    msg.delete({ timeout: 10000 });
+                });
+        }
 
         if (!nick || nick.trim() == "") {
             return message.reply("Lütfen yeni takma adı girin!");
