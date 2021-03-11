@@ -66,12 +66,17 @@ module.exports = {
             server.region.charAt(0).toUpperCase() + server.region.slice(1);
         const commandembed = {
             color: 0xe60ffa,
+            thumbnail: {
+                url: server.iconURL({ format: "png", dynamic: false })
+            },
             title: server.name + " Sunucusuna Dair Bilgiler",
             description: `**Sunucu ID:** ${server.id}\n**Sunucu Adı:** ${
                 server.name
-            }\n**Toplam Üye:** ${
+            }\n**Sunucu Sahibi:** ${server.owner.user.tag}\n**Toplam Üye:** ${
                 server.memberCount
-            }\n**Oluşturulma:** ${serverCreatedAt}\n**Bölge:** ${guildRegion}\n**${botName} Prefix:** ${
+            }\n**Oluşturulma:** ${serverCreatedAt}\n**Bölge:** ${guildRegion}\n**AFK Zaman Aşımı:** ${
+                server.afkTimeout / 60
+            }\n**${botName} Prefix:** ${
                 (await db.fetch("prefix_" + message.guild.id))
                     ? await db.fetch("prefix_" + message.guild.id)
                     : "!c"
