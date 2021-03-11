@@ -3,11 +3,38 @@ module.exports = {
     description: "Belirlediğiniz üyeden istediğiniz rolü kaldırın.",
     aliases: ["removerole", "rolkaldir"],
     args: true,
-    usage: "<member> <role>",
+    usage: "<üye> <rol>",
     guildOnly: true,
     permissions: "MANAGE_ROLES",
     run(message, args, client) {
-        const member = message.mentions.members.first();
+        if (args.length > 2) {
+            return message.channel
+                .send("Bu komut en fazla 2 argüman alıyor!")
+                .then((msg) => {
+                    msg.delete({ timeout: 5000 });
+                });
+        }
+
+        let memberid;
+        if (message.mentions.members.size) {
+            memberid = message.mentions.members.first().id;
+        } else {
+            if (args[0].startsWith("<@")) {
+                memberid = args[1];
+            } else {
+                memberid = args[0];
+            }
+        }
+        const member = message.guild.members.cache.find(
+            (m) => m.id == memberid
+        );
+
+        if (!member) {
+            return message.channel.send("Böyle bir üye yok!").then((msg) => {
+                msg.delete({ timeout: 5000 });
+            });
+        }
+
         const taggedRole = message.guild.roles.cache.find(
             (role) => role === message.mentions.roles.first()
         );
@@ -31,26 +58,12 @@ module.exports = {
                 });
         }
 
-        if (member == undefined) {
-            return message
-                .reply(`Lütfen geçerli bir üye etiketle!`)
-                .then((msg) => {
-                    msg.delete({ timeout: 5000 });
-                });
-        }
-
-        if (taggedRole == undefined) {
-            return message
-                .reply(`Lütfen geçerli bir rol etiketle!`)
-                .then((msg) => {
-                    msg.delete({ timeout: 5000 });
-                });
-        }
-
         try {
             member.roles.remove(taggedRole);
             message.channel
-                .send(`${taggedRole} rolü ${member} üyesinden **kaldırıldı**.`)
+                .send(
+                    `${taggedRole} rolü <@${member.id}> üyesinden **kaldırıldı**.`
+                )
                 .then((msg) => {
                     msg.delete({ timeout: 5000 });
                 });
@@ -58,7 +71,7 @@ module.exports = {
             console.error(error);
             message.channel
                 .send(
-                    `${taggedRole} rolü ${member} üyesine eklenirken bir **sorun oluştu**.`
+                    `${taggedRole} rolü <@${member.id}> üyesine eklenirken bir **sorun oluştu**.`
                 )
                 .then((msg) => {
                     msg.delete({ timeout: 5000 });
