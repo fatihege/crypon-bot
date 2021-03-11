@@ -17,14 +17,9 @@ module.exports = {
                 message.content.toLowerCase().trim().toString() === "chelp" ||
                 message.content.toLowerCase().trim().toString() === "prefix"
             ) {
-                message.channel
-                    .send(
-                        `Bu sunucudaki önekim \`${prefix}\`\nBütün komutlarımın listesine ulaşmak için \`${prefix}help\` komutunu kullanabilirsin.`
-                    )
-                    .then((msg) => {
-                        msg.delete({ timeout: 5000 });
-                    });
-                return;
+                return message.channel.send(
+                    `Bu sunucudaki önekim \`${prefix}\`\nBütün komutlarımın listesine ulaşmak için \`${prefix}help\` komutunu kullanabilirsin.`
+                );
             }
         }
 
