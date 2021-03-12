@@ -4,6 +4,7 @@
   "description": "Türkçe, stabil, hızlı ve kolay kullanımı olan güçlü bir Discord moderasyon botu.",
   "main": "index.js",
   "dependencies": {
+    "byte-size": "^7.0.1",
     "dateformat": "^4.5.1",
     "discord.js": "^12.5.1",
     "pretty-ms": "^7.0.1",
