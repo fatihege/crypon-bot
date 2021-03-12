@@ -1,4 +1,6 @@
 const pretty = require("pretty-ms");
+const byteSize = require("byte-size");
+const os = require("os");
 
 module.exports = {
     name: "stats",
@@ -15,6 +17,7 @@ module.exports = {
             (server) => (totalMember += server.members.cache.size)
         );
         const ping = `${client.ws.ping} ms`;
+
         const memoryUsageCalculation = (
             process.memoryUsage().heapUsed /
             1024 /
@@ -23,6 +26,11 @@ module.exports = {
             .toString()
             .split(".");
         const memoryUsage = `${memoryUsageCalculation[0]},${memoryUsageCalculation[1][0]}${memoryUsageCalculation[1][1]}`;
+
+        const totalMemoryConv = byteSize(os.totalmem());
+        const totalMemory = `${
+            totalMemoryConv.value
+        }${totalMemoryConv.unit.toString().toUpperCase()}`;
 
         const uptime = pretty(client.uptime)
             .toString()
@@ -39,7 +47,9 @@ module.exports = {
                 url:
                     "https://cdn.discordapp.com/avatars/815184711416152094/14720c67dbcbbbd60ec7949c7c0f1d2e.png?size=1024"
             },
-            description: `**Toplam Sunucu:** ${totalGuild}\n**Toplam Kullanıcı:** ${totalMember}\n**Ping:** ${ping}\n**Bellek Kullanımı:** ${memoryUsage} MB\n**Çalışma Süresi:** ${uptime}`
+            description: `**Toplam Sunucu:** ${totalGuild}\n**Toplam Kullanıcı:** ${totalMember}\n**Ping:** ${ping}\n**İşlemci:** ${
+                os.cpus()[0].model
+            }\n**Bellek Kullanımı:** ${memoryUsage} MB\n**Toplam Bellek:** ${totalMemory}\n**Çalışma Süresi:** ${uptime}`
         };
 
         message.channel.send({ embed: embed });
