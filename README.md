@@ -14,6 +14,7 @@ Eğer sunucunuzda başka botlar varsa ve önekler karışıyorsa öneki de deği
 |:-----------:|:----------:|:----------:|
 | avatar | uavatar, mavatar | Kendinizin veya başka bir üyenin avatarını görün. |
 | ban | mban, memberban, uyeengelle, uengelle	| Bir üyeyi sunucudan engelleyin. |
+| botinfo | botbilgi	| Botun kullanım ve işletim sistemi bilgilerini görün. |
 | grole | giverole, rolver | Belirlediğiniz üyeye istediğiniz rolü verin. |
 | help | yardim | Botta kullanabileceğiniz bütün komutların listesini çıkartır. |
 | invite | inv, davet	| Botun davet linkini gönderir. |
@@ -50,6 +51,7 @@ If you have other bots on your server and the prefixes are getting mixed up, you
 |:-----------:|:----------:|:----------:|
 | avatar | uavatar, mavatar | See your own or a Friend avatar. |
 | ban | mban, memberban, uyeengelle, uengelle	| Block a member from the server. |
+| botinfo | botbilgi	| See the bot's usage and operating system information. |
 | grole | giverole, rolver | Give the member you designate the role you want. |
 | help | yardim | It makes a list of all the commands you can use in the bot. |
 | invite | inv, davet	| Sends the bot's invitation link. |
