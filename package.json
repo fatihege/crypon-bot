@@ -1,6 +1,6 @@
 {
   "name": "crypon",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "Türkçe, stabil, hızlı ve kolay kullanımı olan güçlü bir Discord moderasyon botu.",
   "main": "index.js",
   "dependencies": {
