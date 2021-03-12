@@ -16,11 +16,21 @@ module.exports = {
                 (ch) => ch.id === logChannel
             );
 
-            let logEmbed = {
-                color: 0xe60ffa,
-                title: "Kanal Silindi",
-                description: `**${channel.name}** kanalı silindi.`
-            };
+            let logEmbed;
+
+            if (channel.type == "category") {
+                logEmbed = {
+                    color: 0xe60ffa,
+                    title: "Kategori Silindi",
+                    description: `**${channel.name}** kategorisi silindi.`
+                };
+            } else {
+                logEmbed = {
+                    color: 0xe60ffa,
+                    title: "Kanal Silindi",
+                    description: `**${channel.name}** kanalı silindi.`
+                };
+            }
 
             return logch.send({ embed: logEmbed });
         }
