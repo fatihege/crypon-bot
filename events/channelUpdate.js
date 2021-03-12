@@ -31,7 +31,7 @@ module.exports = {
 
                 if (oldChannel.name.toString() != newChannel.name.toString()) {
                     if (oldChannel.type == "category") {
-                        logEmbed.description = `**${newChannel.id}** Kategorisi güncellendi.\n\n**Eski Ad:** ${oldChannel.name}\n**Yeni Ad:** ${newChannel.name}`;
+                        logEmbed.description = `**${newChannel.name}** Kategorisi güncellendi.\n\n**Eski Ad:** ${oldChannel.name}\n**Yeni Ad:** ${newChannel.name}`;
                     } else {
                         logEmbed.description = `<#${newChannel.id}> kanalı güncellendi.\n\n**Eski Ad:** ${oldChannel.name}\n**Yeni Ad:** ${newChannel.name}`;
                     }
