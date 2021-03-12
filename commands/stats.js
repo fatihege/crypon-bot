@@ -18,14 +18,10 @@ module.exports = {
         );
         const ping = `${client.ws.ping} ms`;
 
-        const memoryUsageCalculation = (
-            process.memoryUsage().heapUsed /
-            1024 /
-            1024
-        )
-            .toString()
-            .split(".");
-        const memoryUsage = `${memoryUsageCalculation[0]},${memoryUsageCalculation[1][0]}${memoryUsageCalculation[1][1]}`;
+        const memoryUsageConv = byteSize(process.memoryUsage().heapUsed);
+        const memoryUsage = `${
+            memoryUsageConv.value
+        }${memoryUsageConv.unit.toString().toUpperCase()}`;
 
         const totalMemoryConv = byteSize(os.totalmem());
         const totalMemory = `${
@@ -49,7 +45,7 @@ module.exports = {
             },
             description: `**Toplam Sunucu:** ${totalGuild}\n**Toplam Kullanıcı:** ${totalMember}\n**Ping:** ${ping}\n**İşlemci:** ${
                 os.cpus()[0].model
-            }\n**Bellek Kullanımı:** ${memoryUsage} MB\n**Toplam Bellek:** ${totalMemory}\n**Çalışma Süresi:** ${uptime}`
+            }\n**Bellek Kullanımı:** ${memoryUsage}\n**Toplam Bellek:** ${totalMemory}\n**Çalışma Süresi:** ${uptime}`
         };
 
         message.channel.send({ embed: embed });
