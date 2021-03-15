@@ -1,24 +1,24 @@
-module.exports = {
-    name: "invite",
-    description: "Botun davet linkini gönderir.",
-    aliases: ["inv", "davet"],
-    args: false,
-    usage: null,
-    guildOnly: false,
-    permissions: null,
-    run(message, args, client) {
-        const messageEmbed = {
-            color: 0xff14b9,
-            title: "Botu Davet Et",
-            description:
-                "https://discord.com/oauth2/authorize?client_id=815184711416152094&scope=bot&permissions=8",
-            footer: {
-                text: "Fatih EGE",
-                icon_url:
-                    "https://imgupload.io/images/2021/02/28/bot-avatar.png"
-            }
-        };
+const translate = require('../language/translate');
 
-        message.channel.send({ embed: messageEmbed });
-    }
+module.exports = {
+	name: 'invite',
+	description: null,
+	aliases: ['inv', 'davet'],
+	args: false,
+	usage: null,
+	guildOnly: false,
+	permissions: null,
+	run(message, args, client) {
+		this.description = translate(message, 'commands.invite.description');
+		const messageEmbed = {
+			color: 0xff14b9,
+			author: {
+				name: 'Crypon',
+				icon_url: 'https://imgupload.io/images/2021/02/28/bot-avatar.png',
+			},
+			description: translate(message, 'commands.invite.messages.inviteEmbed'),
+		};
+
+		message.channel.send({ embed: messageEmbed });
+	},
 };
