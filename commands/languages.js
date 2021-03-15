@@ -9,7 +9,7 @@ module.exports = {
 	args: false,
 	usage: null,
 	guildOnly: false,
-	permissions: 'MANAGE_GUILD',
+	permissions: null,
 	async run(message, args, client) {
 		this.description = translate(message, 'commands.languages.description');
 		this.usage = translate(message, 'commands.languages.usage');
