@@ -18,12 +18,12 @@ module.exports = {
 			: await db.fetch('prefix_dm_' + message.channel.id);
 
 		let language;
-		if (message.guild && (await db.fetch('lang_' + message.guild.id))) {
+		if (message.guild && await db.fetch('lang_' + message.guild.id)) {
 			language = await db.fetch('lang_' + message.guild.id);
 		} else if (
 			message.channel &&
 			message.channel.type == 'dm' &&
-			(await db.fetch('lang_dm_' + message.channl.id))
+			await db.fetch('lang_dm_' + message.channel.id)
 		) {
 			language = await db.fetch('lang_dm_' + message.channel.id);
 		} else {
@@ -51,7 +51,7 @@ module.exports = {
 		};
 
 		if (!guildOrChannel) {
-			messageEmbed.description = `${translate(message, 'commands.help.messages.listOfAllOfTheCommands')}\n\n${map(
+			messageEmbed.description = `${translate(message, 'commands.help.messages.listOfAllOfTheCommands')}\n\n${commands.map(
 				(command) =>
 					'`' +
 					command.name +
