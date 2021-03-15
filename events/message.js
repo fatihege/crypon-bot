@@ -43,7 +43,7 @@ module.exports = {
             return message.reply(translate(message, "basic.cannotUsePrivateMessages"));
         }
 
-        if (command.permissions) {
+        if (command.permissions && message.channel.type != 'dm') {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
                 return message.channel.send(translate(message, "basic.notPermission", message.author.id))
