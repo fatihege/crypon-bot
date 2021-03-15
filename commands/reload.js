@@ -1,54 +1,48 @@
-const fs = require("fs");
+const fs = require('fs');
+const translate = require('../language/translate');
 
 module.exports = {
-    name: "reload",
-    description: "Seçtiğiniz komutu yeniden yükleyin.",
-    aliases: ["cmdreload", "commandreload", "yenidenyukle"],
-    args: true,
-    usage: "<komut>",
-    guildOnly: true,
-    permissions: "MANAGE_ROLES",
-    run(message, args, client) {
-        if (!args.length) {
-            return message.channel.send(
-                `Lütfen yeniden yüklenecek komutun adını gir ${message.author}!`
-            );
-        }
-        const commandName = args[0].toLowerCase();
-        const command =
-            message.client.commands.find(
-                (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
-            ) || message.client.commands.get(commandName);
+	name: 'reload',
+	description: null,
+	aliases: ['cmdreload', 'commandreload', 'yenidenyukle'],
+	args: true,
+	usage: null,
+	guildOnly: true,
+	permissions: 'MANAGE_ROLES',
+	run(message, args, client) {
+        this.description = translate(message, "commands.reload.description");
+        this.usage = translate(message, "commands.reload.usage");
 
-        if (!command) {
-            return message.channel.send(`Böyle bir komut tanımlı değil!`);
-        }
+		const commandName = args[0].toLowerCase();
+		const command =
+			message.client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName)) ||
+			message.client.commands.get(commandName);
 
-        const commandFiles = fs.readdirSync("./commands");
-        const fileName = commandFiles.find((file) =>
-            fs.readFileSync(`./commands/${file}`)
-        );
+		if (!command) {
+			return message.channel.send(translate(message, 'commands.reload.messages.commandNotFound'));
+		}
 
-        delete require.cache[require.resolve(`./${command.name}.js`)];
+		const commandFiles = fs.readdirSync('./commands');
+		const fileName = commandFiles.find((file) => fs.readFileSync(`./commands/${file}`));
 
-        try {
-            const newCommand = require(`./${command.name}.js`);
-            message.client.commands.set(newCommand.name, newCommand);
-            message.channel
-                .send(
-                    `**\`${command.name}\`** komutu başarıyla yeniden yüklendi!`
-                )
-                .then((msg) => {
-                    msg.delete({ timeout: 5000 });
-                })
-                .catch((err) => {
-                    console.error(err);
-                });
-        } catch (error) {
-            console.error(error);
-            message.channel.send(
-                `**\`${command.name}\`** komutu yüklenirken bir hata meydana geliyor.\nHata: ${error.message}`
-            );
-        }
-    }
+		delete require.cache[require.resolve(`./${command.name}.js`)];
+
+		try {
+			const newCommand = require(`./${command.name}.js`);
+			message.client.commands.set(newCommand.name, newCommand);
+			message.channel
+				.send(translate(message, "commands.reload.messages.successful", command.name))
+				.then((msg) => {
+					msg.delete({ timeout: 5000 });
+				})
+				.catch((err) => {
+					console.error(err);
+				});
+		} catch (error) {
+			console.error(error);
+			message.channel.send(
+				translate(message, "commands.reload.messages.errorOccurred", command.name)
+			);
+		}
+	},
 };
