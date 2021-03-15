@@ -1,0 +1,518 @@
+{
+	"languageName": "English",
+	"basic": {
+		"prefixMessage": "My prefix on this server is `{0}`\nYou can use the `{0}help` command to get a list of all my commands.",
+		"cannotUsePrivateMessages": "You cannot use this command in private messages!",
+		"plaseGiveArg": "Please give an argument to the post, <@{0}>!",
+		"thisCommandUsage": "\nUsage of this command: `{0}{1} {2}`",
+		"notPermission": "**You can't do that, <@{0}>!** Not enough permission.",
+		"errorOccurred": "An error occurred while running this command.",
+		"over2000": "The message cannot be displayed because its size exceeds 2000 characters.",
+		"yes": "Yes",
+		"no": "No",
+		"before": "Before",
+		"after": "After",
+		"date": {
+			"year": "Year(s)",
+			"month": "Month(s)",
+			"day": "Day(s)",
+			"hour": "Hour(s)",
+			"minute": "Minute(s)",
+			"second": "Second(s)",
+			"datetime": {
+				"dayNames": [
+					"Sun",
+					"Mon",
+					"Tue",
+					"Wed",
+					"Thu",
+					"Fri",
+					"Sat",
+					"Sunday",
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday",
+					"Saturday"
+				],
+				"monthNames": [
+					"Jan",
+					"Feb",
+					"Mar",
+					"Apr",
+					"May",
+					"Jun",
+					"Jul",
+					"Aug",
+					"Sep",
+					"Oct",
+					"Nov",
+					"Dec",
+					"January",
+					"February",
+					"March",
+					"April",
+					"May",
+					"June",
+					"July",
+					"August",
+					"September",
+					"October",
+					"November",
+					"December"
+				],
+				"timeNames": ["a", "m", "am", "am", "A", "P", "AM", "PM"]
+			}
+		}
+	},
+	"commands": {
+		"avatar": {
+			"description": "See your own or a member's avatar.",
+			"usage": "<member[optional]>",
+			"messages": {
+				"userAvatar": "User Avatar",
+				"memberNotExists": "There is no such member!",
+				"usersAvatar": "{0}'s Avatar"
+			}
+		},
+		"ban": {
+			"description": "Block a member from the server.",
+			"usage": "<member> <reason[optional]>",
+			"messages": {
+				"memberNotExists": "There is no such member!",
+				"cannotBanYourself": "Shhh! You cannot block yourself.",
+				"cannotBanCrypon": "Hey you! You cannot block me using this command.",
+				"memberBannedWithReason": "<@{0}> was banned for \"{1}\".",
+				"memberBanned": "<@{0}> has been successfully banned.",
+				"errorOccurred": "An error occurred while blocking <@{0}>!"
+			}
+		},
+		"botinfo": {
+			"description": "See the bot's usage and operating system information.",
+			"usage": "",
+			"messages": {
+				"cryponBotInfo": "Crypon Bot Information",
+				"botsUptime": "**Bot's Uptime**",
+				"os": "**Operating System**",
+				"versions": "**Versions**",
+				"versionsValue": "**Crypon Version:** {0}\n**Node.js Version:** {1}\n**Discord.js Version:** {2}",
+				"memory": "**Memory**",
+				"memoryValue": "**Total Memory:** {0}\n**Memory Used:** {1} \n**Free Memory:** {2}",
+				"cpu": "**Processor (CPU)**",
+				"cpuValue": "**Model:** {0}\n**Speed:** {1}\n**Core Count:** {2}"
+			}
+		},
+		"grole": {
+			"description": "Give the member you designate the role you want.",
+			"usage": "<member> <role>",
+			"messages": {
+				"maxArgs": "This command takes up to 2 arguments!",
+				"memberNotExists": "There is no such member!",
+				"rolePosition": "My role must be higher in order to perform this operation. Please take my role up.",
+				"validMember": "Please tag a valid member!",
+				"validRole": "Please tag a valid role!",
+				"roleAdded": "The {0} role **has been added** to the <@{1}> member.",
+				"errorOccurred": "There was a **problem** adding the {0} role to the {1} member."
+			}
+		},
+		"help": {
+			"description": "It makes a list of all the commands you can use in the bot.",
+			"usage": "<command[optional]>",
+			"messages": {
+				"botCommandsTitle": "{0} Commands",
+				"listOfAllOfTheCommands": "Here is a list of all the commands you can use on me.",
+				"moreDetailsWithGuild": "You can use the `{0}help <command>` command on the **{1}** server to get more detailed information.\n\nSupport Server: https://discord.gg/Xn3JRrbY8d",
+				"moreDetails": "You can use the command `{0}help <command>` to get more detailed information.\n\nSupport Server: https://discord.gg/Xn3JRrbY8d",
+				"iSentCommands": "I have sent you the list of all my commands as a private message.",
+				"errorOccurred": "I am getting an error sending commands to you. You may have blocked private messages.",
+				"commandNotFound": "No such command was found.",
+				"commandTitle": "Command **{0}**",
+				"commandName": "**Command Name:** {0}\n",
+				"commandAlternatives": "**Alternatives:** {0}",
+				"commandDescription": "**Description:** {0}\n",
+				"commandUsage": "**Usage:** {0}{1} {2}"
+			}
+		},
+		"invite": {
+			"description": "It sends the bot's invitation link, website and support server in a single message.",
+			"usage": "",
+			"messages": {
+				"inviteEmbed": ":love_letter: **Invitation Link**\n[Click it, let it come!](https://discord.com/oauth2/authorize?client_id=815184711416152094&scope=bot&permissions=8)\n\n:floppy_disk: **Support Server**\n[Join Us](https://discord.gg/Xn3JRrbY8d)\n\n:gem: **Website**\n[Visit](https://fatihege.github.io/crypon/)"
+			}
+		},
+		"invites": {
+			"description": "See how many people a member has invited",
+			"usage": "<member[optional]>",
+			"messages": {
+				"memberNotExists": "Hey <@{0}>, there is no such member!",
+				"embedTitle": "{0} Invites",
+				"embedDescription": "<@{0}> has **{1}** invitations in total."
+			}
+		},
+		"job": {
+			"description": "The bot chooses a random job for you or the member you tag.",
+			"usage": "<member[optional]>",
+			"messages": {
+				"jobs": [
+					"Garbageman",
+					"Engineer",
+					"Architect",
+					"Construction Engineer",
+					"Idler",
+					"Municipality Employee",
+					"Freelance Programmer",
+					"Unemployed",
+					"Unemployed",
+					"Unemployed",
+					"Unemployed",
+					"Unemployed",
+					"Doctor",
+					"Janitor",
+					"Nurse",
+					"Chef",
+					"Public Prosecutor",
+					"Judge",
+					"Lawyer",
+					"Fisherman",
+					"Soldier",
+					"Police",
+					"Special Forces",
+					"Seller",
+					"Shoemaker",
+					"Dishwasher",
+					"Tuckshop",
+					"President",
+					"Gas Station Employee",
+					"Barber",
+					"Farmer"
+				],
+				"memberNotExists": "There is no such member!",
+				"embedTitle": "{0}'s Job",
+				"embedDescription": "The profession I chose for you: **{0}**"
+			}
+		},
+		"kick": {
+			"description": "Kick a member from server.",
+			"usage": "<member> <reason[optional]>",
+			"messages": {
+				"memberNotExists": "There is no such member!",
+				"cannotKickCrypon": "Hey you! You **cannot** kick me with this command!",
+				"cannotKickYourself": "You cannot kick yourself off a server!",
+				"memberIsAdmin": "Take it slow, an administrator cannot be kicked off his/her own server!",
+				"memberIsKickedWithReason": "<@{0}> has been **successfully** kicked off the server!\n**Reason:** {1}",
+				"memberIsKicked": "<@{0}> has been **successfully** kicked off the server!",
+				"errorOccurred": "An error occurred while kicking <@{0}>."
+			}
+		},
+		"languages": {
+			"description": "See all languages available on the bot.",
+			"usage": "",
+			"messages": {
+				"langsNotFound": "No language found.",
+				"embedTitle": "Languages"
+			}
+		},
+		"logchannel": {
+			"description": "Choose the channel you want to keep track of what is happening on the server.",
+			"usage": "<channel>",
+			"messages": {
+				"selectChannel": "Please select the channel I will keep logging!",
+				"successful": "The logging channel has been successfully set to {0}.",
+				"errorOccurred": "I am getting an error while setting up the logging channel."
+			}
+		},
+		"love": {
+			"description": "It shows the love you have with the member you tagged.",
+			"usage": "<member>",
+			"messages": {
+				"memberRequired": "Please tag a member or enter an ID!",
+				"notYourself": "You cannot measure your love for yourself!",
+				"first": "**You have more work...**\n\n",
+				"second": "**Why are you like this?!**\n\n",
+				"third": "**So, maybe...**\n\n",
+				"fourth": "**Well good, keep going like this.**\n\n",
+				"fifth": "**Oww, what did you do?**\n\n",
+				"sixth": "**I wish you happiness in your life.**\n\n"
+			}
+		},
+		"minfo": {
+			"description": "See your own or another member's information.",
+			"usage": "<member[optional]>",
+			"messages": {
+				"memberNotExists": "There is no such member!",
+				"embedTitle": "{0}'s Information",
+				"yourselfInfo": "**Your Username:** {0}\n**ID:** {1}\n**Account Creation:** {2}\n**Joining The Server:** {3}\n**Roles:** ",
+				"memberInfo": "**Username:** {0}\n**ID:** {1}\n**Account Creation:** {2}\n**Joining The Server:** {3}\n**Roles:** "
+			}
+		},
+		"ping": {
+			"description": "Learn out the ping value of the bot.",
+			"usage": "",
+			"messages": {
+				"pingValue": "My ping value"
+			}
+		},
+		"purge": {
+			"description": "Delete the number of messages you specified.",
+			"usage": "<amount>",
+			"messages": {
+				"argMustBeNumber": "The entered value must be a number! **{0}** is not a number.",
+				"argLimit": "The number of messages to be deleted must be between 1 and 100!"
+			}
+		},
+		"random": {
+			"description": "It shows a random image.",
+			"usage": "<category[dog|cat|panda]>",
+			"messages": {
+				"fetchingImage": "Fetching image..."
+			}
+		},
+		"reload": {
+			"description": "Reload the command of your choice.",
+			"usage": "<command>",
+			"messages": {
+				"commandNotFound": "Such a command is not defined!",
+				"successful": "The `{0}` command has been successfully reloaded!",
+				"errorOccurred": "An error occurs while reloading the command `{0}`."
+			}
+		},
+		"rmrole": {
+			"description": "Remove the role you want from the member you specified.",
+			"usage": "<member> <role>",
+			"messages": {
+				"maxArgs": "This command takes up to 2 arguments!",
+				"memberNotExists": "There is no such member!",
+				"memberAdmin": "You cannot remove any role from the server administrator!",
+				"cannotRemoveFromYourself": "You can't take a role from yourself!",
+				"roleRemoved": "The {0} role **has been removed** from the <@{1}> member.",
+				"errorOccurred": "There was a problem removing role {0} from the <@{1}> member."
+			}
+		},
+		"setautorole": {
+			"description": "Choose the primary role that will be given to members who join the server.",
+			"usage": "<role>",
+			"messages": {
+				"selectRole": "Please choose the automatic role!",
+				"successful": "Auto role has been successfully set to {0}.",
+				"errorOccurred": "I am getting an error while setting up the auto role."
+			}
+		},
+		"setlanguage": {
+			"description": "Change the default language of the bot.",
+			"usage": "<language[{0}]>",
+			"messages": {
+				"argAlert": "This command takes at most 1 argument!",
+				"langNotExists": "There is no such language!",
+				"successful": "The language has been successfully changed!"
+			}
+		},
+		"setnickname": {
+			"description": "Change a member's nickname.",
+			"usage": "<member-id> <nickname>",
+			"messages": {
+				"maxArgs": "This command takes at most 1 argument!",
+				"memberNotExists": "There is no member with the ID **{0}**. You may have given the wrong order of the arguments, using this command: `{1}{2} {3}`",
+				"enterNickname": "Please enter new nickname!",
+				"successful": "The nickname of member <@{0}> has been successfully set to **{1}**.",
+				"errorOccurred": "A problem was encountered while setting the member's nickname."
+			}
+		},
+		"setprefix": {
+			"description": "Change the bot's prefix.",
+			"usage": "<prefix>",
+			"messages": {
+				"successful": "The prefix has been successfully set to `{0}`.",
+				"errorOccurred": "I am getting an error while changing the prefix."
+			}
+		},
+		"sinfo": {
+			"description": "Server information.",
+			"usage": "",
+			"messages": {
+				"embedTitle": "{0}'s Informations",
+				"embedDescription": "**Server ID:** {0}\n**Server Name:** {1}\n**Server Owner:** {2}\n**Total Member:** {3}\n**Server Creation:** {4}\n**Region:** {5}\n**AFK Timeout:** {6}\n**{7} Prefix:** {8}"
+			}
+		},
+		"stats": {
+			"description": "See the bot's statistics.",
+			"usage": "",
+			"messages": {
+				"embedTitle": "Statistics",
+				"embedDescription": "**Total Servers:** {0}\n**Total Users:** {1}\n**Ping:** {2}\n**Processor (CPU):** {3}\n**Memory Usage:** {4}\n**Total Memory:** {5}\n**Uptime:** {6}"
+			}
+		},
+		"unban": {
+			"description": "Unban a user.",
+			"usage": "<user-id>",
+			"messages": {
+				"memberNotExists": "There is no such member!",
+				"memberNotBanned": "This member is not already unbanned.",
+				"successful": "The ban on <@{0}> has been successfully lifted!",
+				"errorOccurred": "There was a problem unbaning the user."
+			}
+		},
+		"unlogchannel": {
+			"description": "Delete the previously selected logging channel.",
+			"usage": "",
+			"messages": {
+				"successful": "Logging channel deleted successfully!",
+				"errorOccurred": "An error occurred.",
+				"channelNotSelected": "The logging channel is not already selected."
+			}
+		},
+		"unsetautorole": {
+			"description": "Remove previously selected auto role activity.",
+			"usage": "",
+			"messages": {
+				"successful": "Automatic role has been removed successfully.",
+				"errorOccurred": "I am getting an error while removing the auto role.",
+				"channelNotSelected": "The automatic role is not already set up."
+			}
+		},
+		"unwlcchannel": {
+			"description": "Delete the previously selected welcome channel.",
+			"usage": "",
+			"messages": {
+				"successful": "Welcome members channel successfully deleted!",
+				"errorOccurred": "An error occurred.",
+				"channelNotSelected": "The channel to welcome members is not already selected."
+			}
+		},
+		"wlcchannel": {
+			"description": "Specify the channel through which members joining the server will be greeted.",
+			"usage": "<channel>",
+			"messages": {
+				"selectChannel": "Please select the welcome channel!",
+				"channelIsText": "The channel to welcome members has to be a text channel!",
+				"successful": "The welcome channel has been successfully set to <#{0}>.",
+				"errorOccurred": "I am getting an error while setting up the welcome channel."
+			}
+		}
+	},
+	"events": {
+		"channelCreate": {
+			"messages": {
+				"categoryCreatedTitle": "Category Created",
+				"categoryCreatedDescription": "**{0}** category created.",
+				"channelCreatedTitle": "Channel Created",
+				"channelCreatedDescription": "<#{0}> channel created."
+			}
+		},
+		"channelDelete": {
+			"messages": {
+				"categoryDeletedTitle": "Category Deleted",
+				"categoryDeletedDescription": "**{0}** category deleted.",
+				"channelDeletedTitle": "Channel Deleted",
+				"channelDeletedDescription": "**{0}** channel deleted."
+			}
+		},
+		"channelUpdate": {
+			"messages": {
+				"categoryUpdatedTitle": "Category Updated",
+				"categoryUpdatedDescription": "**{0}** category updated.\n\n**Old Name:** {1}\n**New Name:** {2}",
+				"channelUpdatedTitle": "Channel Updated",
+				"channelUpdatedDescription": "<#{0}> channel updated.\n\n**Old Name:** {1}\n**New Name:** {2}"
+			}
+		},
+		"emojiCreate": {
+			"messages": {
+				"embedTitle": "Emoji Created",
+				"embedDescription": "**Name:** {0}\n**ID:** {1}\n**Animated:** {2}\n**Picture:** {3}"
+			}
+		},
+		"emojiDelete": {
+			"messages": {
+				"embedTitle": "Emoji Deleted",
+				"embedDescription": "**Name:** {0}\n**ID:** {1}\n**Animated:** {2}\n**Picture:** {3}"
+			}
+		},
+		"emojiUpdate": {
+			"messages": {
+				"embedTitle": "Emoji Updated",
+				"embedDescription": "**Name:** {0}\n**Animation:** {1}\n**Picture:** {2}"
+			}
+		},
+		"guildBanAdd": {
+			"messages": {
+				"embedTitle": "Member Banned",
+				"embedDescription": "<@{0}> banned."
+			}
+		},
+		"guildBanRemove": {
+			"messages": {
+				"embedTitle": "User Unbanned",
+				"embedDescription": "<@{0}> unbanned."
+			}
+		},
+		"guildCreate": {
+			"messages": {
+				"message": "Hello, I'm {0}. Thank you for accepting to invite me to the host. :heart:\n\nTo select the logging channel: `{1}logchannel <channel>`\nTo select the welcome channel: `{1}wlcchannel <channel>`\nTo set autorole: `{1}setautorole <rol>`\nTo change the prefix: `{1}sprefix <prefix>`\nFor detailed information: `{1}help <command [optional]>`\n\nTo learn more about bot usage: https://github.com/fatihege/crypon-bot/wiki\n\nSupport server: https://discord.gg/Xn3JRrbY8d\n\n**Note:** The {0} role should be moved to the top as possible from the `Server Settings> Roles` section for it to work correctly. Please be careful with it."
+			}
+		},
+		"guildIntegrationsUpdate": {
+			"messages": {
+				"embedTitle": "Integration Updated",
+				"embedDescription": "Server's integrations updated."
+			}
+		},
+		"guildMemberAdd": {
+			"messages": {
+				"welcomeMessages": [
+					"Welcome aboard, {0}. It's good to see you here.",
+					"Ooo, {0}'s here. Everybody stand up!",
+					"Hurray! You finally joined us, {0}!",
+					"Welcome {0}. You almost missed the party.",
+					"What's up {0}. Dinner is on you tonight."
+				]
+			}
+		},
+		"guildMemberRemove": {
+			"messages": {
+				"embedTitle": "Member Left",
+				"embedDescription": "<@{0}> has left the server.\n**Roles:** "
+			}
+		},
+		"guildUpdate": {
+			"messages": {
+				"embedTitle": "Server Updated",
+				"nameChange": "**Old Name:** {0}\n**New Name:** {1}\n\n",
+				"regionChange": "**Old Region:** {0}\n**New Region:** {1}\n\n",
+				"iconChange": "**Old Icon:** {0}\n**New Icon:** {1}\n\n"
+			}
+		},
+		"messageDelete": {
+			"messages": {
+				"embedTitle": "Message Deleted - #{0}"
+			}
+		},
+		"messageDeleteBulk": {
+			"messages": {
+				"embedTitle": "{0} Message(s) Deleted - #{1}"
+			}
+		},
+		"messageUpdate": {
+			"messages": {
+				"embedTitle": "Message Edited - #{0}"
+			}
+		},
+		"roleCreate": {
+			"messages": {
+				"embedTitle": "Role Created",
+				"embedDescription": "**Name:** {0}\n**Color:** {1}\n**Mentionable:** {2}"
+			}
+		},
+		"roleDelete": {
+			"messages": {
+				"embedTitle": "Role Deleted",
+				"embedDescription": "**Name:** {0}\n**Color:** {1}\n**Mentionable:** {2}\n**Created At:** {3}"
+			}
+		},
+		"roleUpdate": {
+			"messages": {
+				"embedTitle": "Role Updated",
+				"embedDescription": "**Name:** {0}\n**Color:** {1}\n**Mentionable:** {2}"
+			}
+		}
+	}
+}
