@@ -19,14 +19,19 @@ Eğer sunucunuzda başka botlar varsa ve önekler karışıyorsa öneki de deği
 | help | yardim | Botta kullanabileceğiniz bütün komutların listesini çıkartır. |
 | invite | inv, davet	| Botun davet linkini gönderir. |
 | invites | invs, davetler | Bir üyenin kaç kişiyi davet ettiğini görün. |
+| job | is, meslek | Bot size veya etiketlediğiniz üyeye rastgele bir meslek seçer. |
 | kick | mkick, uyeat	| Bir üyeyi sunucudan atın. |
+| languages | langs, diller	| Botta bulunan bütün dilleri görün. |
 | logchannel | logch, setlogch, logkanali, gunlukkanali	| Sunucuda olup bitenlerin kaydını tutacağınız kanalı seçin. |
-| mdel | messagedelete, mdelete, msil, mesajsil	| Belirttiğiniz sayı kadar mesajı silin. |
+| love | sevgi | Etiketlediğiniz üyeyle aranızda olan sevgiyi gösterir. |
 | minfo | memberinfo, uyebilgi, ubilgi	| Kendinizin veya başka bir üyenin bilgilerini görün. |
 | ping | botping | Botun ping değerini öğrenin. |
+| purge | clip, clear, kes, temizle	| Belirttiğiniz sayı kadar mesajı silin. |
+| random | rastgele	| Rastgele bir görsel gösterir. |
 | reload | cmdreload, commandreload, yenidenyukle	| Seçtiğiniz komutu yeniden yükleyin. |
 | rmrole | removerole, rolkaldir | Belirlediğiniz üyeden istediğiniz rolü kaldırın. |
 | setautorole | setarole, orolayarla, otorolayarla | Sunucuya katılan üyelere verilecek olan birincil rolü seçin. |
+| setlanguage | setlang, dilayarla | Botun varsayılan dilini değiştirin. |
 | setnickname | setnick, takmaad | Bir üyenin takma adını değiştirin. |
 | setprefix | setprefix, setpref, prefixayarla | Botun önekini değiştirin. |
 | sinfo | serverinfo, sbilgi, sunucubilgi | Sunucu bilgileri. |
@@ -56,14 +61,19 @@ If you have other bots on your server and the prefixes are getting mixed up, you
 | help | yardim | It makes a list of all the commands you can use in the bot. |
 | invite | inv, davet	| Sends the bot's invitation link. |
 | invites | invs, davetler | See how many people a member has invited. |
+| job | is, meslek | The bot chooses a random job for you or the member you tag. |
 | kick | mkick, uyeat	| Kick a member from server. |
+| languages | langs, diller	| See all languages available on the bot. |
 | logchannel | logch, setlogch, logkanali, gunlukkanali	| Choose the channel you want to keep track of what is happening on the server. |
-| mdel | messagedelete, mdelete, msil, mesajsil	| Delete the number of messages you specified. |
+| love | sevgi | It shows the love you have with the member you tagged. |
 | minfo | memberinfo, uyebilgi, ubilgi	| See your own or another member's information. |
 | ping | botping | Learn out the ping value of the bot. |
+| purge | clip, clear, kes, temizle	| Delete the number of messages you specified. |
+| random | rastgele	| It shows a random image. |
 | reload | cmdreload, commandreload, yenidenyukle	| Reload the command of your choice. |
 | rmrole | removerole, rolkaldir | Remove the role you want from the member you specified. |
 | setautorole | setarole, orolayarla, otorolayarla | Choose the primary role that will be given to members who join the server. |
+| setlanguage | setlang, dilayarla | Change the default language of the bot. |
 | setnickname | setnick, takmaad | Change a member's nickname. |
 | setprefix | setprefix, setpref, prefixayarla | Change the bot's prefix. |
 | sinfo | serverinfo, sbilgi, sunucubilgi | Server information. |
