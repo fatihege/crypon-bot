@@ -1,64 +1,35 @@
-const db = require("wio.db");
+const db = require('wio.db');
+const translate = require('../language/translate');
 
 module.exports = {
-    name: "messageUpdate",
-    once: false,
-    async run(oldMessage, newMessage, client) {
-        if (oldMessage.guild) {
-            if (await db.fetch("logch_" + oldMessage.guild.id)) {
-                if (!oldMessage.guild || oldMessage.author.bot) return;
-                if (oldMessage.content == newMessage.content) return;
+	name: 'messageUpdate',
+	once: false,
+	async run(oldMessage, newMessage, client) {
+		if (oldMessage.guild && (await db.fetch('logch_' + oldMessage.guild.id))) {
+			if (oldMessage.author.bot) return;
+			if (oldMessage.content == newMessage.content) return;
+			console.log(oldMessage.content, newMessage.content);
 
-                const logChannel = await db.fetch(
-                    "logch_" + oldMessage.guild.id
-                );
-                const logch = oldMessage.guild.channels.cache.find(
-                    (ch) => ch.id === logChannel
-                );
+			const logChannel = await db.fetch('logch_' + oldMessage.guild.id);
+			const logch = oldMessage.guild.channels.cache.find((ch) => ch.id === logChannel);
 
-                let logEmbed = {
-                    color: 0xe60ffa,
-                    author: {
-                        name: `${oldMessage.author.username}#${oldMessage.author.discriminator}`,
-                        icon_url: oldMessage.author.displayAvatarURL({
-                            format: "png",
-                            dynamic: true
-                        })
-                    },
-                    title: `Mesaj Düzenlendi - #${oldMessage.channel.name}`,
-                    description: `**Önce:** ${oldMessage.content}\n**Sonra:** ${newMessage.content}`
-                };
+			const before = translate(oldMessage, "basic.before");
+			const after = translate(oldMessage, "basic.after");
 
-                if (logEmbed.description.length > 2048) {
-                    logEmbed = {
-                        color: 0xe60ffa,
-                        author: {
-                            name: `${oldMessage.author.username}#${oldMessage.author.discriminator}`,
-                            icon_url: oldMessage.author.displayAvatarURL({
-                                format: "png",
-                                dynamic: true
-                            })
-                        },
-                        title: `Mesaj Düzenlendi - #${oldMessage.channel.name}`,
-                        description: `**Önce:** ${oldMessage.content}`
-                    };
-                    logch.send({ embed: logEmbed }).then(() => {
-                        logEmbed = {
-                            color: 0xe60ffa,
-                            author: {
-                                name: `${oldMessage.author.username}#${oldMessage.author.discriminator}`,
-                                icon_url: oldMessage.author.displayAvatarURL({
-                                    format: "png",
-                                    dynamic: true
-                                })
-                            },
-                            title: `Mesaj Düzenlendi - #${oldMessage.channel.name}`,
-                            description: `**Sonra:** ${newMessage.content}`
-                        };
-                        logch.send({ embed: logEmbed });
-                    });
-                }
-            }
-        }
-    }
+			let logEmbed = {
+				color: 0xe60ffa,
+				author: {
+					name: `${oldMessage.author.username}#${oldMessage.author.discriminator}`,
+					icon_url: oldMessage.author.displayAvatarURL({ format: 'png', dynamic: true }),
+				},
+				title: translate(oldMessage, 'events.messageUpdate.messages.embedTitle', oldMessage.channel.name),
+				description: `**${before}:** ${oldMessage.content}\n**${after}:** ${newMessage.content}`,
+			};
+
+			if (logEmbed.description.length > 2000) {
+				logEmbed.description = translate(oldMessage, "basic.over2000");
+			}
+			logch.send({ embed: logEmbed });
+		}
+	},
 };
