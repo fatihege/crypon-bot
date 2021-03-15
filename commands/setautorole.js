@@ -1,34 +1,39 @@
-const db = require("wio.db");
+const db = require('wio.db');
+const translate = require('../language/translate');
 
 module.exports = {
-    name: "setautorole",
-    description: "Sunucuya katılan üyelere verilecek olan birincil rolü seçin.",
-    aliases: ["setarole", "orolayarla", "otorolayarla"],
-    args: true,
-    usage: "<rol>",
-    guildOnly: true,
-    permissions: "MANAGE_ROLES",
-    async run(message, args, client) {
-        if (!message.mentions.roles.first()) {
-            message.reply("Lütfen otomatik eklenecek rolü seç!").then((msg) => {
-                msg.delete({ timeout: 5000 });
-            });
-        }
+	name: 'setautorole',
+	description: null,
+	aliases: ['setarole', 'orolayarla', 'otorolayarla'],
+	args: true,
+	usage: null,
+	guildOnly: true,
+	permissions: 'MANAGE_ROLES',
+	async run(message, args, client) {
+		this.description = translate(message, 'commands.setautorole.description');
+		this.usage = translate(message, 'commands.setautorole.usage');
 
-        const autorole = message.mentions.roles.first();
+		if (!message.mentions.roles.first()) {
+			message.reply(translate(message, 'commands.setautorole.messages.selectRole')).then((msg) => {
+				msg.delete({ timeout: 7000 });
+			});
+		}
 
-        try {
-            await db.set("autorole_" + message.guild.id, autorole.id);
-            message.channel
-                .send(`Otomatik rol başarıyla ${autorole} olarak ayarlandı.`)
+		const autorole = message.mentions.roles.first();
+
+		try {
+			await db.set('autorole_' + message.guild.id, autorole.id);
+			return message.channel
+				.send(translate(message, 'commands.setautorole.messages.successful', autorole))
+				.then((msg) => {
+					msg.delete({ timeout: 7000 });
+				});
+		} catch (error) {
+			console.error(error);
+			return message.channel.send(translate(message, "commands.setautorole.messages.errorOccurred"))
                 .then((msg) => {
-                    msg.delete({ timeout: 5000 });
+                    msg.delete({ timeout: 7000 });
                 });
-        } catch (error) {
-            console.error(error);
-            message.channel.send(
-                "Otomatik rol ayarlanırken bir hatayla karşılaşıyorum."
-            );
-        }
-    }
+		}
+	},
 };
