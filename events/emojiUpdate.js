@@ -1,38 +1,50 @@
-const db = require("wio.db");
+const db = require('wio.db');
+const translate = require('../language/translate');
 
 module.exports = {
-    name: "emojiUpdate",
-    once: false,
-    async run(oldEmoji, newEmoji, client) {
-        if (oldEmoji.guild) {
-            if (await db.fetch("logch_" + oldEmoji.guild.id)) {
-                const logChannel = await db.fetch("logch_" + oldEmoji.guild.id);
-                const logch = oldEmoji.guild.channels.cache.find(
-                    (ch) => ch.id === logChannel
-                );
+	name: 'emojiUpdate',
+	once: false,
+	async run(oldEmoji, newEmoji, client) {
+		if (oldEmoji.guild && (await db.fetch('logch_' + oldEmoji.guild.id))) {
+			const logChannel = await db.fetch('logch_' + oldEmoji.guild.id);
+			const logch = oldEmoji.guild.channels.cache.find((ch) => ch.id === logChannel);
 
-                let logEmbed = {
-                    color: 0xe60ffa,
-                    title: "Emoji Güncellendi",
-                    description: oldEmoji.id,
-                    fields: [
-                        {
-                            name: "|-**Önce**-|",
-                            value: `**Adı:** ${oldEmoji.name}\n**Animasyon:** ${
-                                oldEmoji.animated ? "Var" : "Yok"
-                            }\n**Resim:** ${oldEmoji.url}`
-                        },
-                        {
-                            name: "|-**Sonra**-|",
-                            value: `**Adı:** ${newEmoji.name}\n**Animasyon:** ${
-                                newEmoji.animated ? "Var" : "Yok"
-                            }\n**Resim:** ${newEmoji.url}`
-                        }
-                    ]
-                };
+			const oldEmojiAnimated = oldEmoji.animated
+				? translate(oldEmoji, 'basic.yes')
+				: translate(oldEmoji, 'basic.no');
+			const newEmojiAnimated = newEmoji.animated
+				? translate(newEmoji, 'basic.yes')
+				: translate(newEmoji, 'basic.no');
 
-                return logch.send({ embed: logEmbed });
-            }
-        }
-    }
+			let logEmbed = {
+				color: 0xe60ffa,
+				title: translate(oldEmoji, 'events.emojiUpdate.messages.embedTitle'),
+				description: oldEmoji.id,
+				fields: [
+					{
+						name: `**${translate(oldEmoji, 'basic.before')}**`,
+						value: translate(
+							oldEmoji,
+							'events.emojiUpdate.messages.embedDescription',
+							oldEmoji.name,
+							oldEmojiAnimated,
+							oldEmoji.url
+						),
+					},
+					{
+						name: `**${translate(oldEmoji, 'basic.after')}**`,
+						value: translate(
+							oldEmoji,
+							'events.emojiUpdate.messages.embedDescription',
+							newEmoji.name,
+							newEmojiAnimated,
+							newEmoji.url
+						),
+					},
+				],
+			};
+
+			return logch.send({ embed: logEmbed });
+		}
+	},
 };
