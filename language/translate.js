@@ -12,7 +12,7 @@ function translate(event, wordPath, ...args) {
 	let language;
 	if (event.guild && db.fetch('lang_' + event.guild.id)) {
 		language = db.fetch('lang_' + event.guild.id);
-	} else if (event.channel.type == 'dm' && event.channel) {
+	} else if (event.channel && event.channel.type == 'dm' && db.fetch('lang_dm_' + event.channel.id)) {
 		language = db.fetch('lang_dm_' + event.channel.id);
 	} else {
 		language = 'tr';
