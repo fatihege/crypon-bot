@@ -513,7 +513,6 @@
 				"embedTitle": "Rol Güncellendi",
 				"embedDescription": "**Ad:** {0}\n**Renk:** {1}\n**Bahsedilebilir:** {2}"
 			}
-		},
-		"seperator": "end"
+		}
 	}
 }
