@@ -447,7 +447,7 @@
 		},
 		"guildCreate": {
 			"messages": {
-				"message": "Merhaba, ben {0}. Beni sunucuna davet etmeyi kabul ettiğiniz için teşekkür ederim. :heart:\n\nGünlük kaydı kanalını seçmek için: `{1}logchannel <kanal>`\nKullanıcı karşılama kanalını seçmek için: `{1}wlcchannel <kanal>`\nOtorol ayarlamak için: `{1}setautorole <rol>`\nÖneki değiştirmek için: `{1}sprefix <önek>`\nDetaylı bilgi almak için: `{1}help <komut[opsiyonel]>`\n\nBotun kullanımını daha detaylı öğrenmek için: https://github.com/fatihege/crypon-bot/wiki\n\nDestek sunucusu: https://discord.gg/Xn3JRrbY8d\n\n**Not:** Hatasız çalışması için `Sunucu Ayarları > Roller` bölümünden **{0}** rolünün olabildiğince en yukarıya taşınması gerekiyor. Lütfen buna dikkat edin."
+				"message": "Merhaba, ben {0}. Beni sunucuna davet etmeyi kabul ettiğiniz için teşekkür ederim. :heart:\n\nGünlük kaydı kanalını seçmek için: `{1}logchannel <kanal>`\nKullanıcı karşılama kanalını seçmek için: `{1}wlcchannel <kanal>`\nOtorol ayarlamak için: `{1}setautorole <rol>`\nÖneki değiştirmek için: `{1}sprefix <önek>`\nDetaylı bilgi almak için: `{1}help <komut[opsiyonel]>`\nDili değiştirmek için: `{1}setlanguage <dil>`\n\nBotun kullanımını daha detaylı öğrenmek için: https://github.com/fatihege/crypon-bot/wiki\n\nDestek sunucusu: https://discord.gg/Xn3JRrbY8d\n\n**Not:** Hatasız çalışması için `Sunucu Ayarları > Roller` bölümünden **{0}** rolünün olabildiğince en yukarıya taşınması gerekiyor. Lütfen buna dikkat edin."
 			}
 		},
 		"guildIntegrationsUpdate": {
