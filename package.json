@@ -1,16 +1,19 @@
 {
   "name": "crypon",
-  "version": "1.7.1",
-  "description": "Türkçe, stabil, hızlı ve kolay kullanımı olan güçlü bir Discord moderasyon botu.",
+  "version": "2.0.0",
+  "description": "A powerful Discord bot",
   "main": "index.js",
   "dependencies": {
     "byte-size": "^7.0.1",
     "dateformat": "^4.5.1",
     "discord.js": "^12.5.1",
+    "node-fetch": "^2.6.1",
     "pretty-ms": "^7.0.1",
     "wio.db": "^3.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
   "scripts": {
     "start": "node index.js"
   },
@@ -20,9 +23,6 @@
     "discor.js",
     "javascript"
   ],
-  "author": {
-    "name": "Fatih EGE",
-    "email": "fatihxege@gmail.com"
-  },
+  "author": "Fatih EGE",
   "license": "MIT"
 }
