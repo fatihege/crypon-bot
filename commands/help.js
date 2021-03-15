@@ -1,96 +1,123 @@
-const { botName } = require("../config.json");
-const db = require("wio.db");
+const { botName } = require('../config.json');
+const db = require('wio.db');
+const translate = require('../language/translate');
 
 module.exports = {
-    name: "help",
-    description:
-        "Botta kullanabileceğiniz bütün komutların listesini çıkartır.",
-    aliases: ["yardim"],
-    args: false,
-    usage: null,
-    guildOnly: false,
-    permissions: null,
-    async run(message, args, client) {
-        const { commands } = message.client;
-        const prefix = message.guild
-            ? await db.fetch("prefix_" + message.guild.id)
-            : await db.fetch("prefix_dm_" + message.channel.id);
+	name: 'help',
+	description: null,
+	aliases: ['yardim'],
+	args: false,
+	usage: null,
+	guildOnly: false,
+	permissions: null,
+	async run(message, args, client) {
+		this.description = translate(message, 'commands.help.description');
+		const { commands } = message.client;
+		const prefix = message.guild
+			? await db.fetch('prefix_' + message.guild.id)
+			: await db.fetch('prefix_dm_' + message.channel.id);
 
-        const guildOrChannel = message.guild ? message.guild.name : null;
-        let messageEmbed = {
-            color: 0xff14b9,
-            title: botName + " Komutları",
-            description: `Bende kullanabileceğin bütün komutların listesi.\n\n${commands
-                .map(
-                    (command) =>
-                        "**" + command.name + "**: " + command.description
-                )
-                .join(
-                    "\n"
-                )}\n\nDaha detaylı bilgi almak için **${guildOrChannel}** sunucusunda \`${prefix}help <command>\` komutunu kullanabilirsiniz.`
-        };
+		let language;
+		if (message.guild && (await db.fetch('lang_' + message.guild.id))) {
+			language = await db.fetch('lang_' + message.guild.id);
+		} else if (
+			message.channel &&
+			message.channel.type == 'dm' &&
+			(await db.fetch('lang_dm_' + message.channl.id))
+		) {
+			language = await db.fetch('lang_dm_' + message.channel.id);
+		} else {
+			language = 'tr';
+		}
 
-        if (!guildOrChannel) {
-            messageEmbed.description = `Bende kullanabileceğin bütün komutların listesi.\n\n${commands
-                .map(
-                    (command) =>
-                        "**" + command.name + "**: " + command.description
-                )
-                .join(
-                    "\n"
-                )}\n\nDaha detaylı bilgi almak için \`${prefix}help <command>\` komutunu kullanabilirsiniz.`;
-        }
+		const guildOrChannel = message.guild ? message.guild.name : null;
+		let messageEmbed = {
+			color: 0xff14b9,
+			title: translate(message, 'commands.help.messages.botCommandsTitle', botName),
+			description: `${translate(message, 'commands.help.messages.listOfAllOfTheCommands')}\n\n${commands
+				.map(
+					(command) =>
+						'`' +
+						command.name +
+						'`: ' +
+						eval(`require(\`../languages/${language}.json\`).commands.${command.name}.description`)
+				)
+				.join('\n')}\n\n${translate(
+				message,
+				'commands.help.messages.moreDetailsWithGuild',
+				guildOrChannel,
+				prefix
+			)}`,
+		};
 
-        if (!args.length) {
-            return message.author
-                .send({ embed: messageEmbed })
-                .then((msg) => {
-                    if (message.channel.type == "dm") return;
-                    message
-                        .reply(
-                            `Sana bütün komutlarımın listesini özel mesaj olarak gönderdim.`
-                        )
-                        .then((msg) => {
-                            msg.delete({ timeout: 5000 });
-                        });
-                })
-                .catch((err) => {
-                    console.error(err);
-                    message.reply(
-                        `Komutları sana gönderirken bir hatayla karşılaşıyorum.\nÖzel mesajları engellemiş olabilirsin. Bir kontrol et. Eğer yine hatayla karşılaşırsan yapımcım ile iletişime geç.`
-                    );
-                });
-        }
+		if (!guildOrChannel) {
+			messageEmbed.description = `${translate(message, 'commands.help.messages.listOfAllOfTheCommands')}\n\n${map(
+				(command) =>
+					'`' +
+					command.name +
+					'`: ' +
+					eval(`require(\`../languages/${language}.json\`).commands.${command.name}.description`)
+			).join('\n')}\n\n${translate(message, 'commands.help.messages.moreDetails', prefix)}`;
+		}
 
-        const name = args[0].toLowerCase();
-        const command =
-            commands.get(name) ||
-            commands.find((c) => c.aliases && c.aliases.includes(name));
+		if (!args.length) {
+			return message.author
+				.send({ embed: messageEmbed })
+				.then((msg) => {
+					if (message.channel.type == 'dm') return;
+					message.reply(translate(message, 'commands.help.messages.iSentCommands')).then((msg) => {
+						msg.delete({ timeout: 5000 });
+					});
+				})
+				.catch((err) => {
+					return message.channel.send({ embed: messageEmbed }).catch((err) => {
+						console.error(err);
+						return message.reply(translate(message, 'commands.help.messages.errorOccurred')).then((msg) => {
+							msg.delete({ timeout: 5000 });
+						});
+					});
+				});
+		}
 
-        if (!command) {
-            return message.reply("Böyle bir komut bulunamadı.").then((msg) => {
-                msg.delete({ timeout: 5000 });
-            });
-        }
+		const name = args[0].toLowerCase();
+		const command = commands.get(name) || commands.find((c) => c.aliases && c.aliases.includes(name));
 
-        let commandEmbed = {
-            color: 0xff14b9,
-            title: `**${command.name}** Komutu`,
-            description: `**Komut Adı:** ${command.name}\n`
-        };
+		if (!command) {
+			return message.reply(translate(message, 'commands.help.messages.commandNotFound')).then((msg) => {
+				msg.delete({ timeout: 5000 });
+			});
+		}
 
-        if (command.aliases) {
-            commandEmbed.description += `**Alternatifler:** ${command.aliases.join(
-                ", "
-            )}\n`;
-        }
-        if (command.description) {
-            commandEmbed.description += `**Açıklama:** ${command.description}\n`;
-        }
-        if (command.usage) {
-            commandEmbed.description += `**Kullanım:** ${prefix}${command.name} ${command.usage}\n`;
-        }
+		let commandEmbed = {
+			color: 0xff14b9,
+			title: translate(message, 'commands.help.messages.commandTitle', command.name),
+			description: translate(message, 'commands.help.messages.commandName', command.name),
+		};
 
-        message.channel.send({ embed: commandEmbed });
-    }
+		if (command.aliases) {
+			commandEmbed.description += `${translate(
+				message,
+				'commands.help.messages.commandAlternatives',
+				command.aliases.join(', ')
+			)}\n`;
+		}
+		if (translate(message, `commands.${command.name}.description`)) {
+			commandEmbed.description += translate(
+				message,
+				'commands.help.messages.commandDescription',
+				translate(message, `commands.${command.name}.description`)
+			);
+		}
+		if (translate(message, `commands.${command.name}.usage`) != '') {
+			commandEmbed.description += `${translate(
+				message,
+				`commands.help.messages.commandUsage`,
+				prefix,
+				command.name,
+				translate(message, `commands.${command.name}.usage`)
+			)}\n`;
+		}
+
+		message.channel.send({ embed: commandEmbed });
+	},
 };
