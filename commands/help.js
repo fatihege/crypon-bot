@@ -68,11 +68,13 @@ module.exports = {
 					message.reply(translate(message, 'commands.help.messages.iSentCommands')).then((msg) => {
 						msg.delete({ timeout: 5000 });
 					});
+					message.delete();
 				})
 				.catch((err) => {
 					return message.channel.send({ embed: messageEmbed }).catch((err) => {
 						console.error(err);
 						return message.reply(translate(message, 'commands.help.messages.errorOccurred')).then((msg) => {
+							message.delete();
 							msg.delete({ timeout: 5000 });
 						});
 					});
@@ -83,6 +85,7 @@ module.exports = {
 		const command = commands.get(name) || commands.find((c) => c.aliases && c.aliases.includes(name));
 
 		if (!command) {
+			message.delete();
 			return message.reply(translate(message, 'commands.help.messages.commandNotFound')).then((msg) => {
 				msg.delete({ timeout: 5000 });
 			});
@@ -119,5 +122,6 @@ module.exports = {
 		}
 
 		message.channel.send({ embed: commandEmbed });
+		message.delete();
 	},
 };
