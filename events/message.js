@@ -1,4 +1,5 @@
 const db = require("wio.db");
+const translate = require("../language/translate");
 
 module.exports = {
     name: "message",
@@ -15,11 +16,10 @@ module.exports = {
 
             if (
                 message.content.toLowerCase().trim().toString() === "chelp" ||
-                message.content.toLowerCase().trim().toString() === "prefix"
+                message.content.toLowerCase().trim().toString() === "prefix" ||
+                message.content.toLowerCase().trim().toString() === `<@!${client.user.id}>`
             ) {
-                return message.channel.send(
-                    `Bu sunucudaki önekim \`${prefix}\`\nBütün komutlarımın listesine ulaşmak için \`${prefix}help\` komutunu kullanabilirsin.`
-                );
+                return message.channel.send(translate(message, "basic.prefixMessage", prefix));
             }
         }
 
@@ -32,49 +32,52 @@ module.exports = {
 
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
-        const command =
-            client.commands.get(commandName) ||
-            client.commands.find(
-                (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
-            );
+        const command = client.commands.get(commandName) ||
+            client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
         if (!command) return;
 
         if (command.guildOnly && message.channel.type == "dm") {
-            return message.reply("Bu komutu özel mesajlarda kullanamazsın!");
-        }
-
-        if (command.args && !args.length) {
-            let reply = `Lütfen mesaja bir argüman ver ${message.author}!`;
-            if (command.usage) {
-                reply += `\nBu komutun kullanımı: \`${prefix}${command.name} ${command.usage}\``;
+            if (message.channel && !await db.fetch("lang_dm_" + message.channel.id)) {
+                await db.set("lang_dm_" + message.channel.id, "tr");
             }
-            return message.channel.send(reply).then((msg) => {
-                msg.delete({ timeout: 7000 });
-            });
+            return message.reply(translate(message, "basic.cannotUsePrivateMessages"));
         }
 
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
-                return message.channel
-                    .send(
-                        `**Bunu yapamazsın ${message.author}!** Yeterli yetkin yok.`
-                    )
+                return message.channel.send(translate(message, "basic.notPermission", message.author.id))
                     .then((msg) => {
-                        msg.delete({ timeout: 7000 });
+                        msg.delete({
+                            timeout: 7000
+                        });
                     });
             }
+        }
+
+        if (command.args && !args.length) {
+            let reply = translate(message, "basic.plaseGiveArg", message.author.id);
+            if (command.usage) {
+                reply += translate(message, "basic.thisCommandUsage", prefix, command.name, command.usage)
+            }
+            return message.channel.send(reply)
+                .then((msg) => {
+                    msg.delete({
+                        timeout: 7000
+                    });
+                });
         }
 
         try {
             command.run(message, args, client);
         } catch (error) {
             console.error(error);
-            message.channel
-                .send(`Bu komut çalıştırılırken bir hata meydana geldi.`)
+            message.channel.send(translate(message, "basic.errorOccurred"))
                 .then((msg) => {
-                    msg.delete({ timeout: 7000 });
+                    msg.delete({
+                        timeout: 7000
+                    });
                 });
         }
     }
-};
+}
