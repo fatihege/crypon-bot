@@ -447,7 +447,7 @@
 		},
 		"guildCreate": {
 			"messages": {
-				"message": "Hello, I'm {0}. Thank you for accepting to invite me to the host. :heart:\n\nTo select the logging channel: `{1}logchannel <channel>`\nTo select the welcome channel: `{1}wlcchannel <channel>`\nTo set autorole: `{1}setautorole <rol>`\nTo change the prefix: `{1}sprefix <prefix>`\nFor detailed information: `{1}help <command [optional]>`\n\nTo learn more about bot usage: https://github.com/fatihege/crypon-bot/wiki\n\nSupport server: https://discord.gg/Xn3JRrbY8d\n\n**Note:** The {0} role should be moved to the top as possible from the `Server Settings> Roles` section for it to work correctly. Please be careful with it."
+				"message": "Hello, I'm {0}. Thank you for accepting to invite me to the host. :heart:\n\nTo select the logging channel: `{1}logchannel <channel>`\nTo select the welcome channel: `{1}wlcchannel <channel>`\nTo set autorole: `{1}setautorole <rol>`\nTo change the prefix: `{1}sprefix <prefix>`\nFor detailed information: `{1}help <command [optional]>`\nTo change language: `{1}setlanguage <language>`\n\nTo learn more about bot usage: https://github.com/fatihege/crypon-bot/wiki\n\nSupport server: https://discord.gg/Xn3JRrbY8d\n\n**Note:** The {0} role should be moved to the top as possible from the `Server Settings> Roles` section for it to work correctly. Please be careful with it."
 			}
 		},
 		"guildIntegrationsUpdate": {
