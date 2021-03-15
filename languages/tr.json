@@ -1,0 +1,519 @@
+{
+	"languageName": "Türkçe",
+	"basic": {
+		"prefixMessage": "Bu sunucudaki önekim `{0}`\nBütün komutlarımın listesine ulaşmak için `{0}help` komutunu kullanabilirsin.",
+		"cannotUsePrivateMessages": "Bu komutu özel mesajlarda kullanamazsın!",
+		"plaseGiveArg": "Lütfen mesaja bir argüman ver <@{0}>!",
+		"thisCommandUsage": "\nBu komutun kullanımı: `{0}{1} {2}`",
+		"notPermission": "**Bunu yapamazsın <@{0}>!** Yeterli yetkin yok.",
+		"errorOccurred": "Bu komut çalıştırılırken bir hata meydana geldi.",
+		"over2000": "Mesaj boyutu 2000 karakteri aştığı için görüntülenemiyor.",
+		"yes": "Var",
+		"no": "Yok",
+		"before": "Önce",
+		"after": "Sonra",
+		"date": {
+			"year": "Yıl",
+			"month": "Ay",
+			"day": "Gün",
+			"hour": "Saat",
+			"minute": "Dakika",
+			"second": "Saniye",
+			"datetime": {
+				"dayNames": [
+					"Pzr",
+					"Pzt",
+					"Sal",
+					"Çrş",
+					"Prş",
+					"Cum",
+					"Cmt",
+					"Pazar",
+					"Pazartesi",
+					"Salı",
+					"Çarşamba",
+					"Perşembe",
+					"Cuma",
+					"Cumartesi"
+				],
+				"monthNames": [
+					"Ock",
+					"Şub",
+					"Mar",
+					"Nis",
+					"May",
+					"Hzn",
+					"Tem",
+					"Ağs",
+					"Eyl",
+					"Ekm",
+					"Ksm",
+					"Arl",
+					"Ocak",
+					"Şubat",
+					"Mart",
+					"Nisan",
+					"Mayıs",
+					"Haziran",
+					"Temmuz",
+					"Ağustos",
+					"Eylül",
+					"Ekim",
+					"Kasım",
+					"Aralık"
+				],
+				"timeNames": ["ö", "s", "öm", "ös", "Ö", "S", "ÖÖ", "ÖS"]
+			}
+		}
+	},
+	"commands": {
+		"avatar": {
+			"description": "Kendinizin veya başka bir üyenin avatarını görün.",
+			"usage": "<üye[opsiyonel]>",
+			"messages": {
+				"userAvatar": "Kullanıcı Avatarı",
+				"memberNotExists": "Böyle bir üye yok!",
+				"usersAvatar": "{0} Kullanıcısının Avatarı"
+			}
+		},
+		"ban": {
+			"description": "Bir üyeyi sunucudan engelleyin.",
+			"usage": "<üye> <sebep[opsiyonel]>",
+			"messages": {
+				"memberNotExists": "Böyle bir üye yok!",
+				"cannotBanYourself": "Pişşt! Kendini engelleyemezsin.",
+				"cannotBanCrypon": "Hey sen! Beni bu komutu kullanarak engelleyemezsin.",
+				"memberBannedWithReason": "<@{0}> \"{1}\" nedeniyle engellendi.",
+				"memberBanned": "<@{0}> başarıyla engellendi.",
+				"errorOccurred": "<@{0}> engellenirken bir hata oluştu!"
+			}
+		},
+		"botinfo": {
+			"description": "Botun kullanım ve işletim sistemi bilgilerini görün.",
+			"usage": "",
+			"messages": {
+				"cryponBotInfo": "Crypon Bot Bilgisi",
+				"botsUptime": "**Botun Çalışma Süresi**",
+				"os": "**İşletim Sistemi**",
+				"versions": "**Sürümler**",
+				"versionsValue": "**Crypon Sürümü:** {0}\n**Node.js Sürümü:** {1}\n**Discord.js Sürümü:** {2}",
+				"memory": "**Bellek**",
+				"memoryValue": "**Toplam Bellek:** {0}\n**Kullanılan Bellek:** {1} \n**Boş Bellek:** {2}",
+				"cpu": "**İşlemci**",
+				"cpuValue": "**Model:** {0}\n**Hız:** {1}\n**Çekirdek Sayısı:** {2}"
+			}
+		},
+		"grole": {
+			"description": "Belirlediğiniz üyeye istediğiniz rolü verin.",
+			"usage": "<üye> <rol>",
+			"messages": {
+				"maxArgs": "Bu komut en fazla 2 argüman alıyor!",
+				"memberNotExists": "Böyle bir üye yok!",
+				"rolePosition": "Bu işlemi gerçekleştirebilmem için benim rolümün daha yukarıda olması gerekiyor. Lütfen benim rolümü yukarıya al.",
+				"validMember": "Lütfen geçerli bir üye etiketle!",
+				"validRole": "Lütfen geçerli bir rol etiketle!",
+				"roleAdded": "{0} rolü {1} üyesine **eklendi**.",
+				"errorOccurred": "{0} rolü {1} üyesine eklenirken bir **sorun oluştu**."
+			}
+		},
+		"help": {
+			"description": "Botta kullanabileceğiniz bütün komutların listesini çıkartır.",
+			"usage": "<komut[opsiyonel]>",
+			"messages": {
+				"botCommandsTitle": "{0} Komutları",
+				"listOfAllOfTheCommands": "Bende kullanabileceğin bütün komutların listesi.",
+				"moreDetailsWithGuild": "Daha detaylı bilgi almak için **{0}** sunucusunda `{1}yardim <komut>` komutunu kullanabilirsiniz.\n\nDestek Sunucusu: https://discord.gg/Xn3JRrbY8d",
+				"moreDetails": "Daha detaylı bilgi almak için `{0}yardim <komut>` komutunu kullanabilirsiniz.\n\nDestek Sunucusu: https://discord.gg/Xn3JRrbY8d",
+				"iSentCommands": "Sana bütün komutlarımın listesini özel mesaj olarak gönderdim.",
+				"errorOccurred": "Komutları sana gönderirken bir hatayla karşılaşıyorum. Özel mesajları engellemiş olabilirsin.",
+				"commandNotFound": "Böyle bir komut bulunamadı.",
+				"commandTitle": "**{0}** Komutu",
+				"commandName": "**Komut Adı:** {0}\n",
+				"commandAlternatives": "**Alternatifler:** {0}",
+				"commandDescription": "**Açıklama:** {0}\n",
+				"commandUsage": "**Kullanım:** {0}{1} {2}"
+			}
+		},
+		"invite": {
+			"description": "Botun davet bağlantısını, web sitesini ve destek sunucusunu tek bir mesaj içerisinde gönderir.",
+			"usage": "",
+			"messages": {
+				"inviteEmbed": ":love_letter: **Davet Bağlantısı**\n[Tıkla, gelsin!](https://discord.com/oauth2/authorize?client_id=815184711416152094&scope=bot&permissions=8)\n\n:floppy_disk: **Destek Sunucusu**\n[Aramıza Katıl](https://discord.gg/Xn3JRrbY8d)\n\n:gem: **Web Sitesi**\n[Ziyaret Et](https://fatihege.github.io/crypon/)"
+			}
+		},
+		"invites": {
+			"description": "Bir üyenin kaç kişiyi davet ettiğini görün.",
+			"usage": "<üye[opsiyonel]>",
+			"messages": {
+				"memberNotExists": "Hey <@{0}>, böyle bir üye yok!",
+				"embedTitle": "{0} Kullanıcısının Davetleri",
+				"embedDescription": "<@{0}> kullanıcısının toplam **{1}** daveti var."
+			}
+		},
+		"job": {
+			"description": "Bot size veya etiketlediğiniz üyeye rastgele bir meslek seçer.",
+			"usage": "<üye[opsiyonel]>",
+			"messages": {
+				"jobs": [
+					"Çöpçü",
+					"Mühendis",
+					"Mimar",
+					"İnşaat Mühendisi",
+					"Kaldırım Mühendisi",
+					"Belediye Çalışanı",
+					"Freelance Yazılımcı",
+					"İşsiz",
+					"İşsiz",
+					"İşsiz",
+					"İşsiz",
+					"İşsiz",
+					"Doktor",
+					"Hademe",
+					"Hemşire",
+					"Aşçı",
+					"Savcı",
+					"Hakim",
+					"Avukat",
+					"Balıkçı",
+					"Asker",
+					"Polis",
+					"Özel Harekatçı",
+					"Satıcı",
+					"Ayakkabıcı",
+					"Bulaşıkçı",
+					"Börekçi",
+					"Başkan",
+					"Benzinci",
+					"Berber",
+					"Çiftçi"
+				],
+				"memberNotExists": "Böyle bir üye yok!",
+				"embedTitle": "{0} Üyesinin Mesleği",
+				"embedDescription": "Senin için seçtiğim meslek: **{0}**"
+			}
+		},
+		"kick": {
+			"description": "Bir üyeyi sunucudan atın.",
+			"usage": "<üye> <sebep[opsiyonel]>",
+			"messages": {
+				"memberNotExists": "Böyle bir üye yok!",
+				"cannotKickCrypon": "Hey sen! Beni bu komutla **atamazsın!**",
+				"cannotKickYourself": "Kendini bir sunucudan atamazsın!",
+				"memberIsAdmin": "Yavaş ol, bir yönetici kendi sunucusundan atılamaz!",
+				"memberIsKickedWithReason": "<@{0}> sunucudan başarıyla **atıldı!**\n**Sebebi:** {1}",
+				"memberIsKicked": "<@{0}> sunucudan başarıyla **atıldı!**",
+				"errorOccurred": "<@{0}> sunucudan atılırken bir **hata oluştu.**"
+			}
+		},
+		"languages": {
+			"description": "Botta bulunan bütün dilleri görün.",
+			"usage": "",
+			"messages": {
+				"langsNotFound": "Herhangi bir dil bulunamadı.",
+				"embedTitle": "Diller"
+			}
+		},
+		"logchannel": {
+			"description": "Sunucuda olup bitenlerin kaydını tutacağınız kanalı seçin.",
+			"usage": "<kanal>",
+			"messages": {
+				"selectChannel": "Lütfen günlük kaydını tutacağım kanalı seç!",
+				"successful": "Günlük kaydı kanalı başarıyla {0} olarak ayarlandı.",
+				"errorOccurred": "Günlük kaydı kanalı ayarlanırken bir hatayla karşılaşıyorum."
+			}
+		},
+		"love": {
+			"description": "Etiketlediğiniz üyeyle aranızda olan sevgiyi gösterir.",
+			"usage": "<üye>",
+			"messages": {
+				"memberRequired": "Lütfen bir üyeyi etiketle veya ID gir!",
+				"notYourself": "Kendinle olan sevgini ölçemezsin!",
+				"first": "**Daha çok işiniz var...**\n\n",
+				"second": "**Neden böylesiniz?!**\n\n",
+				"third": "**Yani, gibi gibi...**\n\n",
+				"fourth": "**Güzel güzel, böyle devam.**\n\n",
+				"fifth": "**Oww, siz ne yaptınız?**\n\n",
+				"sixth": "**Hayatınızda mutluluklar dilerim.**\n\n"
+			}
+		},
+		"minfo": {
+			"description": "Kendinizin veya başka bir üyenin bilgilerini görün.",
+			"usage": "<üye[opsiyonel]>",
+			"messages": {
+				"memberNotExists": "Böyle bir üye yok!",
+				"embedTitle": "{0} Kullanıcısının Bilgileri",
+				"yourselfInfo": "**Kullanıcı Adınız:** {0}\n**ID:** {1}\n**Hesap Oluşturma:** {2}\n**Sunucuya Katılma:** {3}\n**Roller:** ",
+				"memberInfo": "**Kullanıcı Adı:** {0}\n**ID:** {1}\n**Hesap Oluşturma:** {2}\n**Sunucuya Katılma:** {3}\n**Roller:** "
+			}
+		},
+		"ping": {
+			"description": "Botun ping değerini öğrenin.",
+			"usage": "",
+			"messages": {
+				"pingValue": "Ping değerim"
+			}
+		},
+		"purge": {
+			"description": "Belirttiğiniz sayı kadar mesajı silin.",
+			"usage": "<miktar>",
+			"messages": {
+				"argMustBeNumber": "Girilen değer bir sayı olmalı! **{0}** bir sayı değil.",
+				"argLimit": "Silinecek mesaj sayısı 1 ile 100 arasında olmalıdır!"
+			}
+		},
+		"random": {
+			"description": "Rastgele bir görsel gösterir.",
+			"usage": "<kategori[köpek|kedi|panda]>",
+			"messages": {
+				"fetchingImage": "Görsel alınıyor..."
+			}
+		},
+		"reload": {
+			"description": "Seçtiğiniz komutu yeniden yükleyin.",
+			"usage": "<komut>",
+			"messages": {
+				"commandNotFound": "Böyle bir komut tanımlı değil!",
+				"successful": "`{0}` komutu başarıyla yeniden yüklendi!",
+				"errorOccurred": "`{0}` komutu yüklenirken bir hata meydana geliyor."
+			}
+		},
+		"rmrole": {
+			"description": "Belirlediğiniz üyeden istediğiniz rolü kaldırın.",
+			"usage": "<üye> <rol>",
+			"messages": {
+				"maxArgs": "Bu komut en fazla 2 argüman alıyor!",
+				"memberNotExists": "Böyle bir üye yok!",
+				"memberAdmin": "Sunucu yöneticisinden herhangi bir rolü kaldıramazsın!",
+				"cannotRemoveFromYourself": "Bir rolü kendinden kaldıramazsın!",
+				"roleRemoved": "{0} rolü <@{1}> üyesinden **kaldırıldı**.",
+				"errorOccurred": "{0} rolü <@{1}> üyesine eklenirken bir **sorun oluştu**."
+			}
+		},
+		"setautorole": {
+			"description": "Sunucuya katılan üyelere verilecek olan birincil rolü seçin.",
+			"usage": "<rol>",
+			"messages": {
+				"selectRole": "Lütfen otomatik rolü seç!",
+				"successful": "Otomatik rol başarıyla {0} olarak ayarlandı.",
+				"errorOccurred": "Otomatik rol ayarlanırken bir hatayla karşılaşıyorum."
+			}
+		},
+		"setlanguage": {
+			"description": "Botun varsayılan dilini değiştirin.",
+			"usage": "<dil[{0}]>",
+			"messages": {
+				"maxArgs": "Bu komut en fazla 1 argüman alıyor!",
+				"langNotExists": "Böyle bir dil bulunmuyor!",
+				"successful": "Dil başarıyla değiştirildi!"
+			}
+		},
+		"setnickname": {
+			"description": "Bir üyenin takma adını değiştirin.",
+			"usage": "<üye-id> <takma-ad>",
+			"messages": {
+				"maxArgs": "Bu komut en fazla 1 argüman alıyor!",
+				"memberNotExists": "**{0}** ID'sine sahip bir üye yok. Argümanların sırasını yanlış vermiş olabilirsin, bu komutun kullanımı: `{1}{2} {3}`",
+				"enterNickname": "Lütfen yeni takma adı girin!",
+				"successful": "<@{0}> kullanıcısının takma adı başarıyla **{1}** olarak ayarlandı.",
+				"errorOccurred": "Üyenin takma adı ayarlanırken bir sorun ile karşılaşıldı."
+			}
+		},
+		"setprefix": {
+			"description": "Botun önekini değiştirin.",
+			"usage": "<önek>",
+			"messages": {
+				"successful": "Önek başarıyla `{0}` olarak ayarlandı.",
+				"errorOccurred": "Önek değiştirilirken bir hatayla karşılaşıyorum."
+			}
+		},
+		"sinfo": {
+			"description": "Sunucu bilgileri.",
+			"usage": "",
+			"messages": {
+				"embedTitle": "{0} Sunucusuna Dair Bilgiler",
+				"embedDescription": "**Sunucu ID:** {0}\n**Sunucu Adı:** {1}\n**Sunucu Sahibi:** {2}\n**Toplam Üye:** {3}\n**Oluşturulma:** {4}\n**Bölge:** {5}\n**AFK Zaman Aşımı:** {6}\n**{7} Önek:** {8}"
+			}
+		},
+		"stats": {
+			"description": "Botun istatistiklerini görün.",
+			"usage": "",
+			"messages": {
+				"embedTitle": "İstatistikler",
+				"embedDescription": "**Toplam Sunucu:** {0}\n**Toplam Kullanıcı:** {1}\n**Ping:** {2}\n**İşlemci:** {3}\n**Bellek Kullanımı:** {4}\n**Toplam Bellek:** {5}\n**Çalışma Süresi:** {6}"
+			}
+		},
+		"unban": {
+			"description": "Bir kullanıcının engelini kaldırın.",
+			"usage": "<kullanıcı-id>",
+			"messages": {
+				"memberNotExists": "Böyle bir üye yok!",
+				"memberNotBanned": "Bu üye zaten engellenmemiş.",
+				"successful": "<@{0}> kullanıcısının yasağı başarıyla kaldırıldı!",
+				"errorOccurred": "Kullanıcının engeli kaldırılırken bir sorun oluştu."
+			}
+		},
+		"unlogchannel": {
+			"description": "Daha önceden seçilen günlük kaydı kanalını silin.",
+			"usage": "",
+			"messages": {
+				"successful": "Günlük kaydı kanalı başarıyla silindi!",
+				"errorOccurred": "Bir hata ile karşılaşıldı.",
+				"channelNotSelected": "Günlük kaydı kanalı zaten daha önceden seçilmemiş."
+			}
+		},
+		"unsetautorole": {
+			"description": "Daha önceden seçilmiş olan otomatik rol etkinliğini kaldırın.",
+			"usage": "",
+			"messages": {
+				"successful": "Otomatik rol etkinliği başarıyla kaldırıldı.",
+				"errorOccurred": "Otomatik rol kaldırılırken bir hatayla karşılaşıyorum.",
+				"channelNotSelected": "Otomatik rol zaten daha önceden ayarlanmamış."
+			}
+		},
+		"unwlcchannel": {
+			"description": "Daha önceden seçilmiş olan otomatik rol etkinliğini kaldırın.",
+			"usage": "",
+			"messages": {
+				"successful": "Üyeleri karşılama kanalı başarıyla silindi!",
+				"errorOccurred": "Bir hata ile karşılaşıldı.",
+				"channelNotSelected": "Üyeleri karşılama kanalı zaten daha önceden seçilmemiş."
+			}
+		},
+		"wlcchannel": {
+			"description": "Sunucuya katılan üyelerin karşılanacağı kanalı belirtin.",
+			"usage": "<kanal>",
+			"messages": {
+				"selectChannel": "Lütfen üyeleri karşılayacağım seç!",
+				"channelIsText": "Üyeleri karşılayacağım kanal metin kanalı olmak zorunda!",
+				"successful": "Üyeleri karşılama kanalı başarıyla <#{0}> olarak ayarlandı.",
+				"errorOccurred": "Üyelerin karşılanacağı kanal ayarlanırken bir hatayla karşılaşıyorum."
+			}
+		}
+	},
+	"events": {
+		"channelCreate": {
+			"messages": {
+				"categoryCreatedTitle": "Kategori Oluşturuldu",
+				"categoryCreatedDescription": "**{0}** kategorisi oluşturuldu.",
+				"channelCreatedTitle": "Kanal Oluşturuldu",
+				"channelCreatedDescription": "<#{0}> kanalı oluşturuldu."
+			}
+		},
+		"channelDelete": {
+			"messages": {
+				"categoryDeletedTitle": "Kategori Silindi",
+				"categoryDeletedDescription": "**{0}** kategorisi silindi.",
+				"channelDeletedTitle": "Kanal Silindi",
+				"channelDeletedDescription": "**{0}** kanalı silindi."
+			}
+		},
+		"channelUpdate": {
+			"messages": {
+				"categoryUpdatedTitle": "Kategori Güncellendi",
+				"categoryUpdatedDescription": "**{0}** kategorisi güncellendi.\n\n**Eski Ad:** {1}\n**Yeni Ad:** {2}",
+				"channelUpdatedTitle": "Kanal Güncellendi",
+				"channelUpdatedDescription": "<#{0}> kanalı güncellendi.\n\n**Eski Ad:** {1}\n**Yeni Ad:** {2}"
+			}
+		},
+		"emojiCreate": {
+			"messages": {
+				"embedTitle": "Emoji Oluşturuldu",
+				"embedDescription": "**Adı:** {0}\n**ID:** {1}\n**Animasyon:** {2}\n**Resim:** {3}"
+			}
+		},
+		"emojiDelete": {
+			"messages": {
+				"embedTitle": "Emoji Silindi",
+				"embedDescription": "**Adı:** {0}\n**ID:** {1}\n**Animasyon:** {2}\n**Resim:** {3}"
+			}
+		},
+		"emojiUpdate": {
+			"messages": {
+				"embedTitle": "Emoji Güncellendi",
+				"embedDescription": "**Adı:** {0}\n**Animasyon:** {1}\n**Resim:** {2}"
+			}
+		},
+		"guildBanAdd": {
+			"messages": {
+				"embedTitle": "Üye Engellendi",
+				"embedDescription": "<@{0}> sunucudan engellendi."
+			}
+		},
+		"guildBanRemove": {
+			"messages": {
+				"embedTitle": "Kullanıcı Engeli Kaldırıldı",
+				"embedDescription": "<@{0}> kullanıcısının engeli kaldırıldı."
+			}
+		},
+		"guildCreate": {
+			"messages": {
+				"message": "Merhaba, ben {0}. Beni sunucuna davet etmeyi kabul ettiğiniz için teşekkür ederim. :heart:\n\nGünlük kaydı kanalını seçmek için: `{1}logchannel <kanal>`\nKullanıcı karşılama kanalını seçmek için: `{1}wlcchannel <kanal>`\nOtorol ayarlamak için: `{1}setautorole <rol>`\nÖneki değiştirmek için: `{1}sprefix <önek>`\nDetaylı bilgi almak için: `{1}help <komut[opsiyonel]>`\n\nBotun kullanımını daha detaylı öğrenmek için: https://github.com/fatihege/crypon-bot/wiki\n\nDestek sunucusu: https://discord.gg/Xn3JRrbY8d\n\n**Not:** Hatasız çalışması için `Sunucu Ayarları > Roller` bölümünden **{0}** rolünün olabildiğince en yukarıya taşınması gerekiyor. Lütfen buna dikkat edin."
+			}
+		},
+		"guildIntegrationsUpdate": {
+			"messages": {
+				"embedTitle": "Entegrasyon Güncellendi",
+				"embedDescription": "Sunucunun entegrasyonları güncellendi."
+			}
+		},
+		"guildMemberAdd": {
+			"messages": {
+				"welcomeMessages": [
+					"Aramıza hoşgeldin {0}. Seni burada görmek güzel.",
+					"Ooo, {0} gelmiş. Herkes ayağa kalksın!",
+					"Yaşasın! Sonunda sende aramıza katıldın {0}!",
+					"Hoşgeldin {0}. Az kalsın partiyi kaçırıyordun.",
+					"N'aber {0}. Bu akşam yemek senden."
+				]
+			}
+		},
+		"guildMemberRemove": {
+			"messages": {
+				"embedTitle": "Üye Ayrıldı",
+				"embedDescription": "<@{0}> sunucudan ayrıldı.\n**Rolleri:** "
+			}
+		},
+		"guildUpdate": {
+			"messages": {
+				"embedTitle": "Sunucu Güncellendi",
+				"nameChange": "**Eski Ad:** {0}\n**Yeni Ad:** {1}\n\n",
+				"regionChange": "**Eski Bölge:** {0}\n**Yeni Bölge:** {1}\n\n",
+				"iconChange": "**Eski Simge:** {0}\n**Yeni Simge:** {1}\n\n"
+			}
+		},
+		"messageDelete": {
+			"messages": {
+				"embedTitle": "Mesaj Silindi - #{0}"
+			}
+		},
+		"messageDeleteBulk": {
+			"messages": {
+				"embedTitle": "{0} Mesaj Silindi - #{1}"
+			}
+		},
+		"messageUpdate": {
+			"messages": {
+				"embedTitle": "Mesaj Düzenlendi - #{0}"
+			}
+		},
+		"roleCreate": {
+			"messages": {
+				"embedTitle": "Rol Oluşturuldu",
+				"embedDescription": "**Ad:** {0}\n**Renk:** {1}\n**Bahsedilebilir:** {2}"
+			}
+		},
+		"roleDelete": {
+			"messages": {
+				"embedTitle": "Rol Silindi",
+				"embedDescription": "**Ad:** {0}\n**Renk:** {1}\n**Bahsedilebilir:** {2}\n**Oluşturulma:** {3}"
+			}
+		},
+		"roleUpdate": {
+			"messages": {
+				"embedTitle": "Rol Güncellendi",
+				"embedDescription": "**Ad:** {0}\n**Renk:** {1}\n**Bahsedilebilir:** {2}"
+			}
+		},
+		"seperator": "end"
+	}
+}
