@@ -1,63 +1,67 @@
-const db = require("wio.db");
+const db = require('wio.db');
+const translate = require('../language/translate');
 
 module.exports = {
-    name: "setnickname",
-    description: "Bir üyenin takma adını değiştirin.",
-    aliases: ["setnick", "takmaad"],
-    args: true,
-    usage: "<üye-id> <takma-ad>",
-    guildOnly: true,
-    permissions: "CHANGE_NICKNAME",
-    async run(message, args, client) {
-        if (!args.length || args.length < 2) {
-            return message
-                .reply("Bu komut en az 2 argüman alıyor!")
-                .then((msg) => {
-                    msg.delete({ timeout: 5000 });
-                });
-        }
+	name: 'setnickname',
+	description: null,
+	aliases: ['setnick', 'takmaad'],
+	args: true,
+	usage: null,
+	guildOnly: true,
+	permissions: 'CHANGE_NICKNAME',
+	async run(message, args, client) {
+		this.description = translate(message, 'commands.setnickname.description');
+		this.usage = translate(message, 'commands.setnickname.usage');
 
-        let memberid = args[0];
-        var nick = args
-            .join(" ")
-            .split(memberid + " ")
-            .toString()
-            .trim()
-            .replace(",", "")
-            .replace(memberid, "");
-        let member = message.guild.members.cache.find(
-            (member) => member.id == memberid
-        );
+		if (!args.length || args.length < 2) {
+			return message.reply(translate(message, 'commands.setnickname.messages.maxArgs')).then((msg) => {
+				msg.delete({ timeout: 5000 });
+			});
+		}
 
-        if (!member) {
-            const prefix = await db.fetch("prefix_" + message.guild.id);
-            return message.channel
-                .send(
-                    `**${memberid}** ID'sine sahip bir üye yok. Argümanların sırasını yanlış vermiş olabilirsin, bu komutun kullanımı: \`${prefix}${this.name} ${this.usage}\``
-                )
-                .then((msg) => {
-                    msg.delete({ timeout: 10000 });
-                });
-        }
+		let memberid = args[0];
 
-        if (!nick || nick.trim() == "") {
-            return message.reply("Lütfen yeni takma adı girin!");
-        }
+		var nick = args
+			.join(' ')
+			.split(memberid + ' ')
+			.toString()
+			.trim()
+			.replace(',', '')
+			.replace(memberid, '');
+		let member = message.guild.members.cache.find((member) => member.id == memberid);
 
-        try {
-            member.setNickname(nick);
-            message.channel
-                .send(
-                    `<@${member.id}> kullanıcısının takma adı başarıyla **${nick}** olarak ayarlandı.`
-                )
-                .then((msg) => {
-                    msg.delete({ timeout: 5000 });
-                });
-        } catch (error) {
-            console.error(error);
-            message.channel.send(
-                "Üyenin takma adı ayarlanırken bir sorun ile karşılaşıldı."
-            );
-        }
-    }
+		if (!member) {
+			const prefix = await db.fetch('prefix_' + message.guild.id);
+			return message.channel
+				.send(
+					translate(
+						message,
+						'commands.setnickname.messages.memberNotExists',
+						memberid,
+						prefix,
+						this.name,
+						this.usage
+					)
+				)
+				.then((msg) => {
+					msg.delete({ timeout: 10000 });
+				});
+		}
+
+		if (!nick || nick.trim() == '') {
+			return message.reply(translate(message, "commands.setnickname.messages.enterNickname"));
+		}
+
+		try {
+			member.setNickname(nick);
+			message.channel
+				.send(translate(message, "commands.setnickname.messages.successful", member.id, nick))
+				.then((msg) => {
+					msg.delete({ timeout: 5000 });
+				});
+		} catch (error) {
+			console.error(error);
+			message.channel.send(translate(message, "commands.setnickname.messages.errorOccurred"));
+		}
+	},
 };
