@@ -31,7 +31,7 @@ module.exports = {
 			const embed = {
 				color: 0xff3b3b,
 				title: 'Sunucudan Silindi',
-				description: `**Sunucu Adı:** ${guild.name}\n**Sunucu ID:** ${guild.id}\n**Sunucu Sahibi:** ${guild.ownerID ? "<@" + guild.ownerID + ">" : "Bilinmiyor"}\n**Sunucu Sahibi ID:** ${guild.ownerID}\n**Sunucu Üye Sayısı:** ${guild.memberCount}`,
+				description: `**Sunucu Adı:** ${guild.name}\n**Sunucu ID:** ${guild.id}\n**Sunucu Sahibi:** ${guild.owner.user ? guild.owner.user.tag : "Bilinmiyor"}\n**Sunucu Sahibi ID:** ${guild.ownerID}\n**Sunucu Üye Sayısı:** ${guild.memberCount}`,
 				timestamp: new Date(),
 			};
 			webhookClient.send("", {
