@@ -30,7 +30,7 @@ module.exports = {
 			const webhookClient = new WebhookClient(webhookID, webhookToken);
 			const embed = {
 				color: 0xff3b3b,
-				title: 'Sunucudan Silindi',
+				title: 'Sunucudan Çıkarıldı',
 				description: `**Sunucu Adı:** ${guild.name}\n**Sunucu ID:** ${guild.id}\n**Sunucu Sahibi:** ${guild.owner.user ? guild.owner.user.tag : "Bilinmiyor"}\n**Sunucu Sahibi ID:** ${guild.ownerID}\n**Sunucu Üye Sayısı:** ${guild.memberCount}`,
 				timestamp: new Date(),
 			};
